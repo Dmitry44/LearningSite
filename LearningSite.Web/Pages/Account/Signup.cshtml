@@ -9,6 +9,7 @@
             <div class="form-group">
                 <label asp-for="Vm.Name">Name</label>
                 <input type="text" class="form-control" asp-for="Vm.Name" placeholder="Name" />
+                <span class="is-invalid" asp-validation-for="Vm.Name"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Vm.EmailAddress">Email Address</label>
