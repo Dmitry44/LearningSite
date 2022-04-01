@@ -25,6 +25,29 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @if (@User.Claims.Any(x => x.Type == System.Security.Claims.ClaimTypes.Name))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-page="/Account/Index">
+                                        @User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value
+                                    </a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Account/Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Signup">Signup</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
