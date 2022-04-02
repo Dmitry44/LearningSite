@@ -40,6 +40,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// migrate any database changes on startup (includes initial db creation)
+using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    dataContext.Database.Migrate();
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
