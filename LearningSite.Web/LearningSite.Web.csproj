@@ -22,10 +22,4 @@
     <Folder Include="Database\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Database\learning-site.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

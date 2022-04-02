@@ -3,4 +3,24 @@
 @{
 }
 
-<h1>Profile</h1>
+<h3>Profile</h3>
+
+<h4>Claims</h4>
+
+<table class="table table-sm table-striped table-hover">
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            Value
+        </td>
+    </tr>
+    @foreach (var item in Model.Claims)
+    {
+        <tr>
+            <td>@item.Key</td>
+            <td>@item.Value</td>
+        </tr>
+    }
+</table>

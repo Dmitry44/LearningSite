@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@{
+    bool isAuthenticated = User!.Identity!.IsAuthenticated;
+    bool isAdmin = isAuthenticated
+        && (User!.Claims.Any(x => x.Type == System.Security.Claims.ClaimTypes.Role && x.Value == "Admin"));
+    string? userName = "";
+    if (isAuthenticated)
+    {
+        var userNameClaim = User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name);
+        if (userNameClaim is not null) userName = userNameClaim.Value;
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,13 +37,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (isAdmin)
                         {
-                            @if (@User.Claims.Any(x => x.Type == System.Security.Claims.ClaimTypes.Name))
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Settings/Index">Settings</a>
+                            </li>
+                        }
+                        @if (isAuthenticated)
+                        {
+                            @if (!String.IsNullOrWhiteSpace(userName))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-page="/Account/Index">
-                                        @User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name).Value
+                                        @userName
                                     </a>
                                 </li>
                             }
@@ -42,10 +60,10 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Signup">Signup</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Signup">Sign up</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Login</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Account/Login">Sign in</a>
                             </li>
                         }
                     </ul>

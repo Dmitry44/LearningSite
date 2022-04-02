@@ -14,6 +14,7 @@ namespace LearningSite.Web.Server.Entities
         public string PasswordHash { get; set; } = "";
         public string Salt { get; set; } = "";
         public bool IsAdmin { get; set; }
+        public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }
