@@ -1,14 +1,16 @@
 using LearningSite.Web.Server;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LearningSite.Web.Pages.Account
 {
-    public class LogoutModel : PageModel
+    [AllowAnonymous]
+    public class LogoutModel : AppPageModel
     {
         private readonly IUserManager userManager;
 
-        public LogoutModel(IUserManager userManager)
+        public LogoutModel(IUserManager userManager, IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.userManager = userManager;
         }

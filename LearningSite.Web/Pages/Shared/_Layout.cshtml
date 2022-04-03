@@ -1,13 +1,5 @@
 ﻿@{
-    bool isAuthenticated = User!.Identity!.IsAuthenticated;
-    bool isAdmin = isAuthenticated
-        && (User!.Claims.Any(x => x.Type == System.Security.Claims.ClaimTypes.Role && x.Value == "Admin"));
-    string? userName = "";
-    if (isAuthenticated)
-    {
-        var userNameClaim = User.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name);
-        if (userNameClaim is not null) userName = userNameClaim.Value;
-    }
+    var app = (Server.AppPageModel)Model;
 }
 
 <!DOCTYPE html>
@@ -37,19 +29,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
-                        @if (isAdmin)
+                        @if (app.IsAdmin)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-page="/Settings/Index">Settings</a>
                             </li>
                         }
-                        @if (isAuthenticated)
+                        @if (app.IsAuthenticated)
                         {
-                            @if (!String.IsNullOrWhiteSpace(userName))
+                            @if (!String.IsNullOrWhiteSpace(app.UserName))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-page="/Account/Index">
-                                        @userName
+                                        @app.UserName
                                     </a>
                                 </li>
                             }

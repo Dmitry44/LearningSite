@@ -1,17 +1,22 @@
 using LearningSite.Web.Server;
 using LearningSite.Web.Server.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
 namespace LearningSite.Web.Pages.Account
 {
-    public class SignupModel : PageModel
+    [AllowAnonymous]
+    public class SignupModel : AppPageModel
     {
         private readonly IUserManager userManager;
         private readonly IUserRepository userRepository;
 
-        public SignupModel(IUserManager userManager, IUserRepository userRepository)
+        public SignupModel(
+            IUserManager userManager,
+            IUserRepository userRepository,
+            IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.userManager = userManager;
             this.userRepository = userRepository;

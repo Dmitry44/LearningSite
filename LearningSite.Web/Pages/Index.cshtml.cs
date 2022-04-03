@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LearningSite.Web.Server;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LearningSite.Web.Pages
 {
-    public class IndexModel : PageModel
+    [AllowAnonymous]
+    public class IndexModel : AppPageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public IndexModel(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public void OnGet()
         {

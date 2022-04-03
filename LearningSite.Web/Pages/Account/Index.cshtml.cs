@@ -1,13 +1,15 @@
+using LearningSite.Web.Server;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LearningSite.Web.Pages.Account
 {
-    [Authorize]
-    public class IndexModel : PageModel
+    public class IndexModel : AppPageModel
     {
         public Dictionary<string, string> Claims { get; private set; }
+
+        public IndexModel(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
         public void OnGet()
         {
