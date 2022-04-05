@@ -7,13 +7,13 @@ namespace LearningSite.Web.Server
 {
     public interface IUserManager
     {
-        Task SignIn(HttpContext httpContext, AppUserVm user, bool isPersistent = false);
+        Task SignIn(HttpContext httpContext, AppUserVm user);
         Task SignOut(HttpContext httpContext);
     }
 
     public class UserManager : IUserManager
     {
-        public async Task SignIn(HttpContext httpContext, AppUserVm user, bool isPersistent = false)
+        public async Task SignIn(HttpContext httpContext, AppUserVm user)
         {
             string authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 

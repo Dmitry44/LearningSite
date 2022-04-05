@@ -38,7 +38,7 @@ namespace LearningSite.Web.Pages.Account
 
             if (user == null) return Page();
 
-            await userManager.SignIn(this.HttpContext, user, false);
+            await userManager.SignIn(this.HttpContext, user);
 
             return LocalRedirect("/Index");
         }

@@ -9,9 +9,9 @@ namespace LearningSite.Web.Server.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public int UserId { get; set; }
-        public AppUser User { get; set; } = new();
+        public virtual AppUser User { get; set; } = new();
 
         public int PurchaseId { get; set; }
-        public Purchase Purchase { get; set; } = new();
+        public virtual Purchase Purchase { get; set; } = new();
     }
 }

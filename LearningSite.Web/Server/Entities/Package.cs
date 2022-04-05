@@ -11,6 +11,6 @@ namespace LearningSite.Web.Server.Entities
         public bool IsActive { get; set; }
 
         public int LessonId { get; set; }
-        public Lesson Lesson { get; set; } = new();
+        public virtual Lesson Lesson { get; set; } = new();
     }
 }

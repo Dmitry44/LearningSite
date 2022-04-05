@@ -21,7 +21,7 @@ namespace LearningSite.Web.Server.Repositories
 
         public AppUserVm? Validate(LoginVm model)
         {
-            var emailRecords = db.AppUsers.Where(x => x.EmailAddress == model.EmailAddress);
+            var emailRecords = db.AppUsers.Where(x => x.IsActive && x.EmailAddress == model.EmailAddress);
 
             var results = emailRecords.AsEnumerable()
                 .Where(m => m.PasswordHash == HashHelper.GenerateHash(model.Password, m.Salt))
@@ -48,6 +48,7 @@ namespace LearningSite.Web.Server.Repositories
                 PasswordHash = hashedPassword,
                 Salt = salt,
                 Name = model.Name,
+                IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
 

@@ -4,16 +4,18 @@ namespace LearningSite.Web.Server.Entities
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<AppUser> AppUsers => Set<AppUser>();
-        public DbSet<Article> Articles => Set<Article>();
-        public DbSet<Availability> Availabilities => Set<Availability>();
-        public DbSet<AvailabilityDef> AvailabilityDefs => Set<AvailabilityDef>();
-        public DbSet<Booking> Bookings => Set<Booking>();
-        public DbSet<Lesson> Lessons => Set<Lesson>();
-        public DbSet<Package> Packages => Set<Package>();
-        public DbSet<Purchase> Purchases => Set<Purchase>();
+        public virtual DbSet<AppUser> AppUsers => Set<AppUser>();
+        public virtual DbSet<Article> Articles => Set<Article>();
+        public virtual DbSet<Availability> Availabilities => Set<Availability>();
+        public virtual DbSet<AvailabilityDef> AvailabilityDefs => Set<AvailabilityDef>();
+        public virtual DbSet<Booking> Bookings => Set<Booking>();
+        public virtual DbSet<Lesson> Lessons => Set<Lesson>();
+        public virtual DbSet<Package> Packages => Set<Package>();
+        public virtual DbSet<Purchase> Purchases => Set<Purchase>();
 
         public string DbPath { get; } = "Database/learning-site.db";
+
+        public AppDbContext() { }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {

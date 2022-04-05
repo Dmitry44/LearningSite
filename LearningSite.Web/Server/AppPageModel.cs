@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LearningSite.Web.Server
 {
     [Authorize]
+    [RequireHttps]
     public class AppPageModel : PageModel
     {
         private readonly IServiceProvider serviceProvider;
@@ -17,8 +19,7 @@ namespace LearningSite.Web.Server
         {
             base.OnPageHandlerExecuting(context);
             IsAuthenticated = User?.Identity?.IsAuthenticated ?? false;
-            IsAdmin = IsAuthenticated
-                && (User!.Claims.Any(x => x.Type == System.Security.Claims.ClaimTypes.Role && x.Value == "Admin"));
+            IsAdmin = IsAuthenticated && User!.IsInRole("Admin");
             if (IsAuthenticated)
             {
                 var userNameClaim = User?.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name);

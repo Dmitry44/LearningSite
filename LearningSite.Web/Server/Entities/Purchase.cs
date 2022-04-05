@@ -14,13 +14,13 @@ namespace LearningSite.Web.Server.Entities
         public bool IsActive { get; set; }
 
         public int LessonId { get; set; }
-        public Lesson Lesson { get; set; } = new();
+        public virtual Lesson Lesson { get; set; } = new();
 
         public int UserId { get; set; }
-        public AppUser User { get; set; } = new();
+        public virtual AppUser User { get; set; } = new();
 
         public int PackageId { get; set; }
-        public Package Package { get; set; } = new();
+        public virtual Package Package { get; set; } = new();
 
     }
 }

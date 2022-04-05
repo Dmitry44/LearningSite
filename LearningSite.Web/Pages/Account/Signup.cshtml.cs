@@ -38,7 +38,7 @@ namespace LearningSite.Web.Pages.Account
 
             var user = userRepository.Signup(Vm);
 
-            await userManager.SignIn(this.HttpContext, user, false);
+            await userManager.SignIn(this.HttpContext, user);
 
             return RedirectToPage("/Index");
         }

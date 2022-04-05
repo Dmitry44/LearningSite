@@ -10,9 +10,9 @@ namespace LearningSite.Web.Pages
     {
         public IndexModel(IServiceProvider serviceProvider) : base(serviceProvider) { }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            return Page();
         }
     }
 }
