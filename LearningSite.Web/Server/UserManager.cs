@@ -13,6 +13,13 @@ namespace LearningSite.Web.Server
 
     public class UserManager : IUserManager
     {
+        private readonly IAuthenticationService authenticationService;
+
+        public UserManager(IAuthenticationService authenticationService)
+        {
+            this.authenticationService = authenticationService;
+        }
+
         public async Task SignIn(HttpContext httpContext, AppUserVm user)
         {
             string authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -48,7 +55,7 @@ namespace LearningSite.Web.Server
                 // redirect response value.
             };
 
-            await httpContext.SignInAsync(authenticationScheme, claimsPrincipal, authProperties);
+            await authenticationService.SignInAsync(httpContext, authenticationScheme, claimsPrincipal, authProperties);
         }
 
         public async Task SignOut(HttpContext httpContext)
