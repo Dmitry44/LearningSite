@@ -10,7 +10,7 @@ namespace LearningSite.Test.Helpers
     public class TestDbContextTests
     {
         [Fact]
-        public async Task Db1()
+        public async Task TestDbContext_ShouldBeAcessible()
         {
             using (var dbContext = new TestDbContext())
             {
