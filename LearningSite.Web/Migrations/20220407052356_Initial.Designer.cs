@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearningSite.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220402204329_Initial")]
+    [Migration("20220407052356_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -93,15 +93,13 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("EndTime")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("IsDef")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("StartTime")
-                        .IsRequired()
+                    b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -115,15 +113,10 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("DayOfWeek")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EndTime")
-                        .IsRequired()
+                    b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("StartTime")
-                        .IsRequired()
+                    b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

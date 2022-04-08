@@ -91,15 +91,13 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("EndTime")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<bool>("IsDef")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("StartTime")
-                        .IsRequired()
+                    b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -113,15 +111,10 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("DayOfWeek")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("EndTime")
-                        .IsRequired()
+                    b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("StartTime")
-                        .IsRequired()
+                    b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

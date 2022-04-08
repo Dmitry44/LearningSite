@@ -6,8 +6,7 @@ namespace LearningSite.Web.Server.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int DayOfWeek { get; set; }
-        public string StartTime { get; set; } = "";
-        public string EndTime { get; set; } = "";
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
     }
 }

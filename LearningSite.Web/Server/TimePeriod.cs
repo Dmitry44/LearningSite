@@ -1,9 +1,28 @@
 ﻿namespace LearningSite.Web.Server
 {
-    public struct TimePeriod
+    public enum TimeSlotStatus : byte
     {
-        public DateTime Start { get; private set; }
-        public DateTime End { get; private set; }
+        None = 0,
+        Enabled = 1,
+        Disabled = 2,
+        Closed = 3
+    }
+
+    public class TimeSlot : TimePeriod
+    {
+        public TimeSlotStatus Status { get; set; }
+
+        public TimeSlot(DateTime start, DateTime end, TimeSlotStatus status = TimeSlotStatus.None)
+            : base(start, end)
+        {
+            Status = status;
+        }
+    }
+
+    public class TimePeriod
+    {
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
         public TimeSpan Duration { get => End - Start; }
 
         public TimePeriod(DateTime start, DateTime end)
@@ -20,4 +39,5 @@
                 || (Start < other.Start && End > other.End);
         }
     }
+
 }
