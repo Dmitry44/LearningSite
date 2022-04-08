@@ -36,6 +36,12 @@ namespace LearningSite.Web.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
+            if (userRepository.IsEmailExists(Vm.EmailAddress))
+            {
+                ModelState.AddModelError("Vm.EmailAddress", "Email is already in use");
+                return Page();
+            }
+
             var user = userRepository.Signup(Vm);
 
             await userManager.SignIn(this.HttpContext, user);
@@ -55,9 +61,6 @@ namespace LearningSite.Web.Pages.Account
 
         [Required]
         public string Name { get; set; } = "";
-
-        [Required, Compare("Password")]
-        public string ConfirmPassword { get; set; } = "";
     }
 
 }

@@ -6,6 +6,7 @@ namespace LearningSite.Web.Server.Repositories
 {
     public interface IUserRepository
     {
+        bool IsEmailExists(string email);
         AppUserVm Signup(SignupVm model);
         AppUserVm? Validate(LoginVm model);
     }
@@ -17,6 +18,11 @@ namespace LearningSite.Web.Server.Repositories
         public UserRepository(AppDbContext db)
         {
             this.db = db;
+        }
+
+        public bool IsEmailExists(string email)
+        {
+            return db.AppUsers.Any(x => x.EmailAddress == email);
         }
 
         public AppUserVm? Validate(LoginVm model)

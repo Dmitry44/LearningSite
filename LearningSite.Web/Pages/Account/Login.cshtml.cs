@@ -36,7 +36,11 @@ namespace LearningSite.Web.Pages.Account
 
             var user = userRepository.Validate(Vm);
 
-            if (user == null) return Page();
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Email or Password is incorrect");
+                return Page();
+            }
 
             await userManager.SignIn(this.HttpContext, user);
 
