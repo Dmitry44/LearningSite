@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace LearningSite.Test.Helpers
 {
+    //https://www.meziantou.net/testing-ef-core-in-memory-using-sqlite.htm
     public class AppDbContextFactory : IDisposable
     {
-        private DbConnection? _connection;
+        private DbConnection? _connection; //keep connection
 
         private DbContextOptions<AppDbContext> CreateOptions()
         {
@@ -25,13 +26,14 @@ namespace LearningSite.Test.Helpers
         {
             if (_connection == null)
             {
-                _connection = new SqliteConnection("DataSource=:memory:");
+                _connection = new SqliteConnection("DataSource=:memory:"); //db will be deleted when connection is closed
                 _connection.Open();
 
                 var options = CreateOptions();
                 using (var context = new AppDbContext(options))
                 {
-                    context.Database.EnsureCreated();
+                    context.Database.EnsureCreated(); //create db from scheme
+                    //context.Database.Migrate(); //apply migrations
                     SeedTestData(context);
                 }
             }
