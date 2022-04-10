@@ -12,11 +12,12 @@ namespace LearningSite.Test.Helpers
         [Fact]
         public async Task TestDbContext_ShouldBeAcessible()
         {
-            using (var dbContext = new TestDbContext())
-            {
-                Assert.True(await dbContext.Database.CanConnectAsync());
-                Assert.True(dbContext.AppUsers.Any());
-            }
+            using var factory = new AppDbContextFactory();
+            using var dbContext = factory.CreateContext();
+
+            Assert.True(await dbContext.Database.CanConnectAsync());
+            Assert.True(dbContext.AppUsers.Any());
         }
+
     }
 }

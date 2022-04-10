@@ -4,32 +4,51 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LearningSite.Test.Helpers
 {
-    //https://stackoverflow.com/a/60497822/70449
-    public sealed class TestDbContext : AppDbContext
+    public class AppDbContextFactory : IDisposable
     {
-        public TestDbContext() : base()
+        private DbConnection? _connection;
+
+        private DbContextOptions<AppDbContext> CreateOptions()
         {
-            Database.OpenConnection();
-            Database.EnsureCreated();
-            SeedTestData();
+            return new DbContextOptionsBuilder<AppDbContext>()
+                .UseSqlite(_connection!).Options;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("DataSource=file::memory:?cache=shared");
-
-        public override void Dispose()
+        public AppDbContext CreateContext()
         {
-            Database.CloseConnection();
-            base.Dispose();
+            if (_connection == null)
+            {
+                _connection = new SqliteConnection("DataSource=:memory:");
+                _connection.Open();
+
+                var options = CreateOptions();
+                using (var context = new AppDbContext(options))
+                {
+                    context.Database.EnsureCreated();
+                    SeedTestData(context);
+                }
+            }
+
+            return new AppDbContext(CreateOptions());
         }
 
-        private void SeedTestData()
+        public void Dispose()
+        {
+            if (_connection != null)
+            {
+                _connection.Dispose();
+                _connection = null;
+            }
+        }
+
+        private void SeedTestData(AppDbContext db)
         {
             var appUsers = new List<AppUser>
             {
@@ -58,9 +77,9 @@ namespace LearningSite.Test.Helpers
                     IsActive = false
                 }
             };
-            AppUsers.AddRange(appUsers);
-            
-            SaveChanges();
+            db.AppUsers.AddRange(appUsers);
+
+            db.SaveChanges();
         }
 
     }

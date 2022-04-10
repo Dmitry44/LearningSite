@@ -14,7 +14,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlite("Data Source=app.db");
+    options.UseSqlite("Data Source=Database/learning-site.db");
 });
 
 builder.Services.AddAuthentication(options =>

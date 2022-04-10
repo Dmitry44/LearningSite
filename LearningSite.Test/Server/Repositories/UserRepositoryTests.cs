@@ -19,69 +19,69 @@ namespace LearningSite.Test.Server.Repositories
         [Fact]
         public void Validate_ShouldReturnVm_WhenAdminIsActive()
         {
-            using (var dbContext = new TestDbContext())
-            {
-                //arrange
-                var sut = new UserRepository(dbContext);
+            using var factory = new AppDbContextFactory();
+            using var dbContext = factory.CreateContext();
 
-                //act
-                var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "a@a.a", Password = "123" });
+            //arrange
+            var sut = new UserRepository(dbContext);
 
-                //assert
-                Assert.NotNull(appUserVm);
-                Assert.Equal("a@a.a", appUserVm?.EmailAddress);
-                Assert.True(appUserVm?.IsAdmin);
-            }
+            //act
+            var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "a@a.a", Password = "123" });
+
+            //assert
+            Assert.NotNull(appUserVm);
+            Assert.Equal("a@a.a", appUserVm?.EmailAddress);
+            Assert.True(appUserVm?.IsAdmin);
         }
 
         [Fact]
         public void Validate_ShouldReturnVm_WhenUserIsActive()
         {
-            using (var dbContext = new TestDbContext())
-            {
-                //arrange
-                var sut = new UserRepository(dbContext);
+            using var factory = new AppDbContextFactory();
+            using var dbContext = factory.CreateContext();
 
-                //act
-                var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "u@u.u", Password = "234" });
+            //arrange
+            var sut = new UserRepository(dbContext);
 
-                //assert
-                Assert.NotNull(appUserVm);
-                Assert.Equal("u@u.u", appUserVm?.EmailAddress);
-                Assert.False(appUserVm?.IsAdmin);
-            }
+            //act
+            var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "u@u.u", Password = "234" });
+
+            //assert
+            Assert.NotNull(appUserVm);
+            Assert.Equal("u@u.u", appUserVm?.EmailAddress);
+            Assert.False(appUserVm?.IsAdmin);
         }
 
         [Fact]
         public void Validate_ShouldReturnNull_WhenPasswordIncorrect()
         {
-            using (var dbContext = new TestDbContext())
-            {
-                //arrange
-                var sut = new UserRepository(dbContext);
+            using var factory = new AppDbContextFactory();
+            using var dbContext = factory.CreateContext();
 
-                //act
-                var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "a@a.a", Password = "!!!" });
+            //arrange
+            var sut = new UserRepository(dbContext);
 
-                //assert
-                Assert.Null(appUserVm);
-            }
+            //act
+            var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "a@a.a", Password = "!!!" });
+
+            //assert
+            Assert.Null(appUserVm);
         }
 
         [Fact]
         public void Validate_ShouldReturnNull_WhenUserInactive()
         {
-            using (var dbContext = new TestDbContext())
-            {
-                //arrange
-                var sut = new UserRepository(dbContext);
+            using var factory = new AppDbContextFactory();
+            using var dbContext = factory.CreateContext();
 
-                //act
-                var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "i@i.i", Password = "345" });
+            //arrange
+            var sut = new UserRepository(dbContext);
 
-                //assert
-                Assert.Null(appUserVm);
-            }
+            //act
+            var appUserVm = sut.Validate(new Web.Pages.Account.LoginVm() { EmailAddress = "i@i.i", Password = "345" });
+
+            //assert
+            Assert.Null(appUserVm);
         }
     }
 }

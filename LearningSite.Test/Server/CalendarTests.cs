@@ -26,21 +26,5 @@ namespace LearningSite.Test.Server
             Assert.Equal(24, slots.Count);
         }
 
-        [Fact]
-        public void Ttttt()
-        {
-            using (var db = new TestDbContext())
-            {
-                var data = new List<Availability>()
-                {
-                    new() { Start = DateTime.Now.AddDays(-5), End = DateTime.Now },
-                    new() { Start = DateTime.Now, End = DateTime.Now.AddHours(10) },
-                    new() { Start = DateTime.Now.AddYears(1), End = DateTime.Now.AddYears(2) },
-                    new() { Start = DateTime.Now, End = DateTime.Now }
-                };
-                db.Availabilities.AddRange(data);
-                db.SaveChanges();
-            }
-        }
     }
 }
