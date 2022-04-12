@@ -8,3 +8,106 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div x-data='booking' x-cloak x-show="lessons.length">
+    <h3>Booking</h3>
+
+    <h4 x-text="vm.title"></h4>
+    <div class="btn-group" role="group" :aria-label="vm.title">
+        <template x-for="i in lessons" :key="i">
+            <button type="button"
+                :class="{ 'btn': true, 'btn-primary': i == selected.lessonName, 'btn-secondary': i != selected.lessonName, 'btn-lg mx-2': true }"
+                x-text="i"
+                x-on:click="setLesson(i)">
+            </button>
+        </template>
+    </div>
+
+    <h4>Duration</h4>
+    <div class="btn-group" role="group" aria-label="Durations">
+        <template x-for="i in getDurations()" :key="i">
+            <button type="button"
+                :class="{ 'btn': true, 'btn-primary': i == selected.minutes, 'btn-secondary': i != selected.minutes, 'btn-lg mx-2': true }"
+                x-text="i"
+                x-on:click="setDuration(i)">
+            </button>
+        </template>
+    </div>
+
+    <h4>Quantity</h4>
+    <div class="btn-group" role="group" aria-label="Quantity">
+        <template x-for="i in getQuantities()" :key="i">
+            <button type="button"
+                :class="{ 'btn': true, 'btn-primary': i == selected.quantity, 'btn-secondary': i != selected.quantity, 'btn-lg mx-2': true }"
+                x-text="i"
+                x-on:click="setQuantity(i)">
+            </button>
+        </template>
+    </div>
+
+    <div x-text="selected.priceStr"></div>
+    <div x-text="selected.decription"></div>
+    <div>
+        <a class="btn btn-primary btn-lg mx-2" :href="selected.paymentUrl">Buy</a>
+    </div>
+</div>
+
+@section Scripts {
+<script type="text/javascript">
+    document.addEventListener('alpine:init', function () {
+        Alpine.data('booking', function () {
+            return {
+                selected: undefined,
+                lessons: [],
+                vm: @Html.Raw(Json.Serialize(Model.Lessons)),
+
+                init: function () {
+                    var self = this;
+                    this.vm.lessons.forEach(function (lesson) {
+                        if (!self.selected) self.selected = lesson;
+                        if (self.lessons.indexOf(lesson.lessonName) === -1) self.lessons.push(lesson.lessonName);
+                    });
+                    self.selected = self.selected || {};
+                },
+
+                setLesson: function (lessonName) {
+                    this.selected = this.vm.lessons.filter(function (lesson)
+                        { return lesson.lessonName === lessonName; })[0];
+                },
+                setQuantity: function (quantity) {
+                    var self = this;
+                    this.selected = this.vm.lessons.filter(function (lesson)
+                        { return lesson.lessonName === self.selected.lessonName
+                            && lesson.minutes === self.selected.minutes
+                            && lesson.quantity === quantity; })[0];
+                },
+                setDuration: function (minutes) {
+                    var self = this;
+                    this.selected = this.vm.lessons.filter(function (lesson)
+                        { return lesson.lessonName === self.selected.lessonName && lesson.minutes === minutes; })[0];
+                },
+                getDurations: function () {
+                    var rez = [];
+                    var self = this;
+                    this.vm.lessons.forEach(function (lesson) {
+                        if (lesson.lessonName === self.selected.lessonName && rez.indexOf(lesson.minutes) === -1)
+                            rez.push(lesson.minutes);
+                    });
+                    return rez;
+                },
+                getQuantities: function () {
+                    var rez = [];
+                    var self = this;
+                    this.vm.lessons.forEach(function (lesson) {
+                        if (lesson.lessonName === self.selected.lessonName
+                            && lesson.minutes === self.selected.minutes
+                            && rez.indexOf(lesson.quantity) === -1)
+                            rez.push(lesson.quantity);
+                    });
+                    return rez;
+                }
+            }
+        })
+    })
+</script>
+}

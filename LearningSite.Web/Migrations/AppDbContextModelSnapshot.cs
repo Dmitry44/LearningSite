@@ -152,10 +152,11 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
-                    b.Property<int>("Minutes")
+                    b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
@@ -163,6 +164,9 @@ namespace LearningSite.Web.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Lessons");
                 });
@@ -173,13 +177,28 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Decription")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("LessonId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Minutes")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PaymentUrl")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("PriceStr")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -238,6 +257,20 @@ namespace LearningSite.Web.Migrations
                     b.ToTable("Purchases");
                 });
 
+            modelBuilder.Entity("LearningSite.Web.Server.Entities.Setting", b =>
+                {
+                    b.Property<string>("Key")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Key");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("LearningSite.Web.Server.Entities.Booking", b =>
                 {
                     b.HasOne("LearningSite.Web.Server.Entities.Purchase", "Purchase")
@@ -260,7 +293,7 @@ namespace LearningSite.Web.Migrations
             modelBuilder.Entity("LearningSite.Web.Server.Entities.Package", b =>
                 {
                     b.HasOne("LearningSite.Web.Server.Entities.Lesson", "Lesson")
-                        .WithMany()
+                        .WithMany("Packages")
                         .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -293,6 +326,11 @@ namespace LearningSite.Web.Migrations
                     b.Navigation("Package");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("LearningSite.Web.Server.Entities.Lesson", b =>
+                {
+                    b.Navigation("Packages");
                 });
 #pragma warning restore 612, 618
         }

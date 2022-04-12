@@ -12,6 +12,7 @@ namespace LearningSite.Web.Server.Entities
         public virtual DbSet<Lesson> Lessons => Set<Lesson>();
         public virtual DbSet<Package> Packages => Set<Package>();
         public virtual DbSet<Purchase> Purchases => Set<Purchase>();
+        public virtual DbSet<Setting> Settings => Set<Setting>();
 
         public AppDbContext() { }
 

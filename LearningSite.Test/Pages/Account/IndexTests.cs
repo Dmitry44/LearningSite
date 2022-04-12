@@ -1,5 +1,5 @@
 ﻿using LearningSite.Test.Helpers;
-using LearningSite.Web.Pages;
+using LearningSite.Web.Pages.Account;
 using Moq;
 using System;
 using Xunit;
