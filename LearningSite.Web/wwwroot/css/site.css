@@ -16,3 +16,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+[x-cloak] {
+    display: none !important;
+}

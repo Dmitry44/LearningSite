@@ -33,7 +33,6 @@ namespace LearningSite.Web.Server.Handlers
                         PriceStr = x.PriceStr,
                         PaymentUrl = x.PaymentUrl
                     }).ToListAsync();
-                vm.PackageId = vm.Lessons.Select(x => x.PackageId).FirstOrDefault();
                 return vm;
             }
 
@@ -41,7 +40,6 @@ namespace LearningSite.Web.Server.Handlers
 
         public class Vm
         {
-            public int PackageId { get; set; }
             public string Title { get; set; } = "Classes";
             public List<LessonRow> Lessons { get; internal set; } = new();
         }
