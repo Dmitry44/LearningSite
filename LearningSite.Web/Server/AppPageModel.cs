@@ -14,6 +14,7 @@ namespace LearningSite.Web.Server
         public bool IsAuthenticated { get; private set; }
         public bool IsAdmin { get; private set; }
         public string UserName { get; private set; } = "";
+        public string TimeZoneId { get; private set; } = "";
 
         public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
         {
@@ -24,6 +25,8 @@ namespace LearningSite.Web.Server
             {
                 var userNameClaim = User?.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name);
                 if (userNameClaim is not null) UserName = userNameClaim.Value;
+                var userLocalityClaim = User?.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Locality);
+                if (userLocalityClaim is not null) TimeZoneId = userLocalityClaim.Value;
             }
         }
 

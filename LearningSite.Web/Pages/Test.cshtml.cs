@@ -37,7 +37,8 @@ namespace LearningSite.Web.Pages
                     Salt = "Salt",
                     PasswordHash = HashHelper.GenerateHash("aaaaaa", "Salt"),
                     IsAdmin = true,
-                    IsActive = true
+                    IsActive = true,
+                    TimeZoneId = "Russian Standard Time"
                 },
                 new AppUser {
                     Name = "User D",
@@ -45,7 +46,8 @@ namespace LearningSite.Web.Pages
                     Salt = "Salt",
                     PasswordHash = HashHelper.GenerateHash("dddddd", "Salt"),
                     IsAdmin = false,
-                    IsActive = true
+                    IsActive = true,
+                    TimeZoneId = "Eastern Standard Time"
                 }
             };
             db.AppUsers.AddRange(appUsers);

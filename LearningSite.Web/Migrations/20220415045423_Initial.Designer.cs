@@ -11,13 +11,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearningSite.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220412211400_Initial")]
+    [Migration("20220415045423_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
+            modelBuilder.HasAnnotation("ProductVersion", "6.0.4");
 
             modelBuilder.Entity("LearningSite.Web.Server.Entities.AppUser", b =>
                 {
@@ -47,6 +47,10 @@ namespace LearningSite.Web.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Salt")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeZoneId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

@@ -54,6 +54,7 @@ namespace LearningSite.Web.Server.Repositories
                 PasswordHash = hashedPassword,
                 Salt = salt,
                 Name = model.Name,
+                TimeZoneId = model.TimeZoneId,
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
@@ -67,6 +68,7 @@ namespace LearningSite.Web.Server.Repositories
                 EmailAddress = user.EmailAddress,
                 Name = user.Name,
                 IsAdmin = user.IsAdmin,
+                TimeZoneId = user.TimeZoneId,
                 CreatedAt = user.CreatedAt
             };
         }
@@ -79,6 +81,7 @@ namespace LearningSite.Web.Server.Repositories
         public string Name { get; set; } = "";
         public bool IsAdmin { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string TimeZoneId { get; set; } = "";
     }
 
 }

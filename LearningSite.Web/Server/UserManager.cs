@@ -69,6 +69,7 @@ namespace LearningSite.Web.Server
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()));
             claims.Add(new Claim(ClaimTypes.Name, user.Name));
             claims.Add(new Claim(ClaimTypes.Email, user.EmailAddress));
+            claims.Add(new Claim(ClaimTypes.Locality, user.TimeZoneId));
             if (user.IsAdmin)
                 claims.Add(new Claim(ClaimTypes.Role, "Admin"));
             return claims;

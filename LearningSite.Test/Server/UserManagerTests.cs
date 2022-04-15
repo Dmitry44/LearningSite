@@ -45,7 +45,8 @@ namespace LearningSite.Test.Server
             {
                 UserId = 1,
                 Name = "User",
-                EmailAddress = "u@u.u"
+                EmailAddress = "u@u.u",
+                TimeZoneId = "Russian Standard Time"
             };
 
             //act
@@ -66,6 +67,10 @@ namespace LearningSite.Test.Server
             var emailClaim = claims?.FindFirst(ClaimTypes.Email);
             Assert.NotNull(emailClaim);
             Assert.Equal("u@u.u", emailClaim?.Value);
+
+            var localityClaim = claims?.FindFirst(ClaimTypes.Locality);
+            Assert.NotNull(localityClaim);
+            Assert.Equal("Russian Standard Time", localityClaim?.Value);
         }
 
         [Fact]
@@ -77,7 +82,8 @@ namespace LearningSite.Test.Server
                 UserId = 2,
                 Name = "Admin",
                 EmailAddress = "a@a.a",
-                IsAdmin = true
+                IsAdmin = true,
+                TimeZoneId = "Russian Standard Time"
             };
 
             //act
@@ -102,6 +108,10 @@ namespace LearningSite.Test.Server
             var roleClaim = claims?.FindFirst(ClaimTypes.Role);
             Assert.NotNull(roleClaim);
             Assert.Equal("Admin", roleClaim?.Value);
+
+            var localityClaim = claims?.FindFirst(ClaimTypes.Locality);
+            Assert.NotNull(localityClaim);
+            Assert.Equal("Russian Standard Time", localityClaim?.Value);
         }
 
         private void callback(HttpContext h, string? s, ClaimsPrincipal c, AuthenticationProperties? p)

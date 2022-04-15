@@ -3,6 +3,7 @@ using LearningSite.Web.Server.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace LearningSite.Web.Pages.Account
@@ -12,20 +13,33 @@ namespace LearningSite.Web.Pages.Account
     {
         private readonly IUserManager userManager;
         private readonly IUserRepository userRepository;
+        private readonly TimeZoneProvider timeZoneProvider;
 
         public SignupModel(
             IUserManager userManager,
             IUserRepository userRepository,
+            TimeZoneProvider timeZoneProvider,
             IServiceProvider serviceProvider) : base(serviceProvider)
         {
             this.userManager = userManager;
             this.userRepository = userRepository;
+            this.timeZoneProvider = timeZoneProvider;
         }
 
+        public SelectListItem[] TimeZoneList { get => timeZoneProvider.TimeZones
+                .Select(tz => new SelectListItem(tz.SystemName, tz.SystemId, tz.SystemId == Vm.TimeZoneId))
+                .ToArray();
+        }
 
-        public void OnGet()
+        public Dictionary<string, string> TimeZoneMap
+        {
+            get => timeZoneProvider.TimeZones.ToDictionary(x => x.IanaId, x => x.SystemId);
+        }
+
+        public IActionResult OnGet()
         {
 
+            return Page();
         }
 
         [BindProperty]
@@ -54,13 +68,20 @@ namespace LearningSite.Web.Pages.Account
     public class SignupVm
     {
         [Required, EmailAddress]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; } = "";
 
         [Required]
+        [Display(Name = "Password")]
         public string Password { get; set; } = "";
 
         [Required]
+        [Display(Name = "Name")]
         public string Name { get; set; } = "";
+
+        [Required]
+        [Display(Name = "Time zone")]
+        public string TimeZoneId { get; set; } = "";
     }
 
 }

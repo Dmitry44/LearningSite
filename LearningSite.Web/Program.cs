@@ -34,6 +34,8 @@ builder.Services.AddAuthentication(options =>
     }
 );
 
+builder.Services.AddSingleton<TimeZoneProvider>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

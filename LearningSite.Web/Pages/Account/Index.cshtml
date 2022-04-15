@@ -29,18 +29,16 @@
 
 <table class="table table-sm table-striped table-hover">
     <tr>
-        <td>
-            Name
-        </td>
-        <td>
-            Value
-        </td>
+        <th>System Id</th>
+        <th>System Name</th>
+        <th>Iana Id</th>
     </tr>
     @foreach (var item in Model.TimeZones)
     {
         <tr>
-            <td>@item.Key</td>
-            <td>@item.Value</td>
+            <td>@item.SystemId</td>
+            <td>@item.SystemName</td>
+            <td>@item.IanaId</td>
         </tr>
     }
 </table>

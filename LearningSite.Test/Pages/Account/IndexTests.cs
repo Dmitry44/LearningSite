@@ -1,5 +1,6 @@
 ﻿using LearningSite.Test.Helpers;
 using LearningSite.Web.Pages.Account;
+using LearningSite.Web.Server;
 using Moq;
 using System;
 using Xunit;
@@ -13,7 +14,7 @@ namespace LearningSite.Test.Pages.Account
 
         public IndexTests()
         {
-            sut = new IndexModel(serviceProvider);
+            sut = new IndexModel(serviceProvider, new TimeZoneProvider());
         }
 
         [Fact]
