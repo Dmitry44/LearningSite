@@ -26,10 +26,7 @@ namespace LearningSite.Web.Pages.Account
             this.timeZoneProvider = timeZoneProvider;
         }
 
-        public SelectListItem[] TimeZoneList { get => timeZoneProvider.TimeZones
-                .Select(tz => new SelectListItem(tz.SystemName, tz.SystemId, tz.SystemId == Vm.TimeZoneId))
-                .ToArray();
-        }
+        public SelectListItem[] TimeZoneList { get => timeZoneProvider.GetTimeZoneList(Vm.TimeZoneId); }
 
         public Dictionary<string, string> TimeZoneMap
         {

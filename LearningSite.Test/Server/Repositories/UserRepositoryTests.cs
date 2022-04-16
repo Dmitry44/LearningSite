@@ -30,8 +30,10 @@ namespace LearningSite.Test.Server.Repositories
 
             //assert
             Assert.NotNull(appUserVm);
-            Assert.Equal("a@a.a", appUserVm?.EmailAddress);
             Assert.True(appUserVm?.IsAdmin);
+            Assert.Equal("a@a.a", appUserVm?.EmailAddress);
+            Assert.Equal("Admin", appUserVm?.Name);
+            Assert.Equal("Russian Standard Time", appUserVm?.TimeZoneId);
         }
 
         [Fact]

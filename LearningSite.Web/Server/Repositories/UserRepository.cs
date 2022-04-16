@@ -37,7 +37,8 @@ namespace LearningSite.Web.Server.Repositories
                     EmailAddress = m.EmailAddress,
                     Name = m.Name,
                     IsAdmin = m.IsAdmin,
-                    CreatedAt = m.CreatedAt
+                    CreatedAt = m.CreatedAt,
+                    TimeZoneId = m.TimeZoneId
                 });
 
             return results.FirstOrDefault();

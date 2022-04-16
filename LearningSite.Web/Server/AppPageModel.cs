@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace LearningSite.Web.Server
 {
@@ -11,9 +12,11 @@ namespace LearningSite.Web.Server
     {
         private readonly IServiceProvider serviceProvider;
 
+        public int UserId { get; private set; }
         public bool IsAuthenticated { get; private set; }
         public bool IsAdmin { get; private set; }
         public string UserName { get; private set; } = "";
+        public string Email { get; private set; } = "";
         public string TimeZoneId { get; private set; } = "";
 
         public override void OnPageHandlerExecuting(PageHandlerExecutingContext context)
@@ -23,11 +26,17 @@ namespace LearningSite.Web.Server
             IsAdmin = IsAuthenticated && User!.IsInRole("Admin");
             if (IsAuthenticated)
             {
-                var userNameClaim = User?.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Name);
-                if (userNameClaim is not null) UserName = userNameClaim.Value;
-                var userLocalityClaim = User?.Claims.FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.Locality);
-                if (userLocalityClaim is not null) TimeZoneId = userLocalityClaim.Value;
+                UserName = GetClaimValue(ClaimTypes.Name);
+                Email = GetClaimValue(ClaimTypes.Email);
+                TimeZoneId = GetClaimValue(ClaimTypes.Locality);
+                UserId = int.TryParse(GetClaimValue(ClaimTypes.NameIdentifier), out var intValue) ? intValue : 0;
             }
+        }
+
+        private string GetClaimValue(string claim)
+        {
+            var userNameClaim = User?.Claims.FirstOrDefault(x => x.Type == claim);
+            return userNameClaim?.Value ?? "";
         }
 
         public AppPageModel(IServiceProvider serviceProvider)

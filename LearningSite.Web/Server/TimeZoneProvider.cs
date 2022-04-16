@@ -1,8 +1,17 @@
-﻿namespace LearningSite.Web.Server
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace LearningSite.Web.Server
 {
     public class TimeZoneProvider
     {
         public List<Info> TimeZones { get; private set; } = new();
+
+        public SelectListItem[] GetTimeZoneList(string selectedValue)
+        {
+            return TimeZones
+                    .Select(tz => new SelectListItem(tz.SystemName, tz.SystemId, tz.SystemId == selectedValue))
+                    .ToArray();
+        }
 
         public TimeZoneProvider()
         {

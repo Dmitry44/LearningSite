@@ -3,42 +3,114 @@
 @{
 }
 
-<h3>Profile</h3>
+<h3>Account</h3>
 
-<h4>Claims</h4>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                User Info
+            </div>
+            <div x-data="{ disabled: true }" class="card-body">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Vm.EmailAddress"></label>
+                                <input type="text" class="form-control" asp-for="Vm.EmailAddress"
+                                       placeholder="Email Address" readonly />
+                                <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Vm.Name"></label>
+                                <input type="text" class="form-control" asp-for="Vm.Name"
+                                       placeholder="Name" :readonly="disabled" />
+                                <span class="text text text-danger" asp-validation-for="Vm.Name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Vm.Password"></label>
+                                <input class="form-control" asp-for="Vm.Password" type="password"
+                                       placeholder="Password" :readonly="disabled" />
+                                <span class="text text-danger" asp-validation-for="Vm.Password"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Vm.TimeZoneId"></label>
+                                <select class="form-control form-select" asp-for="Vm.TimeZoneId" asp-items="Model.TimeZoneList"
+                                        id="time-zone-id" :readonly="disabled" :disabled="disabled">
+                                    <option value="">Select Time Zone</option>
+                                </select>
+                                <span class="text text-danger" asp-validation-for="Vm.TimeZoneId"></span>
+                            </div>
 
-<table class="table table-sm table-striped table-hover">
-    <tr>
-        <td>
-            Name
-        </td>
-        <td>
-            Value
-        </td>
-    </tr>
-    @foreach (var item in Model.Claims)
-    {
-        <tr>
-            <td>@item.Key</td>
-            <td>@item.Value</td>
-        </tr>
-    }
-</table>
+                            <div class="pt-3">
+                                <button class="btn btn-primary" type="button" x-show="disabled" x-on:click="disabled=false">
+                                    Edit
+                                </button>
+                                <button class="btn btn-primary" type="submit" x-show="!disabled">
+                                    Save
+                                </button>
+                                <button class="btn btn-secondary" type="button" x-show="!disabled" x-on:click="disabled=true">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 
-<h4>Time Zones</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                Claims
+            </div>
+            <div x-data="{ disabled: true }" class="card-body">
+                <table class="table table-sm table-striped table-hover">
+                    <tr>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Value
+                        </td>
+                    </tr>
+                    @foreach (var item in Model.Claims)
+                    {
+                        <tr>
+                            <td>@item.Key</td>
+                            <td>@item.Value</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-<table class="table table-sm table-striped table-hover">
-    <tr>
-        <th>System Id</th>
-        <th>System Name</th>
-        <th>Iana Id</th>
-    </tr>
-    @foreach (var item in Model.TimeZones)
-    {
-        <tr>
-            <td>@item.SystemId</td>
-            <td>@item.SystemName</td>
-            <td>@item.IanaId</td>
-        </tr>
-    }
-</table>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                Time Zones
+            </div>
+            <div x-data="{ disabled: true }" class="card-body">
+                <table class="table table-sm table-striped table-hover">
+                    <tr>
+                        <th>System Id</th>
+                        <th>System Name</th>
+                        <th>Iana Id</th>
+                    </tr>
+                    @foreach (var item in Model.TimeZones)
+                    {
+                        <tr>
+                            <td>@item.SystemId</td>
+                            <td>@item.SystemName</td>
+                            <td>@item.IanaId</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

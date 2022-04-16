@@ -1,36 +1,38 @@
 ﻿using LearningSite.Test.Helpers;
-using LearningSite.Web.Pages.Account;
 using LearningSite.Web.Server;
 using Moq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
-namespace LearningSite.Test.Pages.Account
+namespace LearningSite.Test.Server
 {
-    public class IndexTests
+
+    /*public class AppPageModelTests
     {
+        private readonly AppPageModel sut;
         private readonly IServiceProvider serviceProvider = Mock.Of<IServiceProvider>();
 
-        public IndexTests()
+        public AppPageModelTests()
         {
+            sut = new AppPageModel(serviceProvider);
         }
 
         [Fact]
         public void OnGet_ShouldReturnPage()
         {
-            using var factory = new AppDbContextFactory();
-            using var dbContext = factory.CreateContext();
-
             //arrange
-            var sut = new IndexModel(serviceProvider, new TimeZoneProvider(), dbContext);
             sut.PageContext = PageModelHelper.CreateContext();
 
             //act
-            var response = sut.OnGet();
+            var response = sut.OnPageHandlerExecuting(new Microsoft.AspNetCore.Mvc.Filters.PageHandlerExecutingContext());
 
             //assert
             Assert.NotNull(response);
 
         }
-    }
+    }*/
 }

@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Vm.TimeZoneId"></label>
-                <select class="form-control" asp-for="Vm.TimeZoneId" asp-items="Model.TimeZoneList" id="time-zone-id">
+                <select class="form-control form-select" asp-for="Vm.TimeZoneId" asp-items="Model.TimeZoneList" id="time-zone-id">
                     <option value="">Select Time Zone</option>
                 </select>
                 <span class="text text-danger" asp-validation-for="Vm.TimeZoneId"></span>
