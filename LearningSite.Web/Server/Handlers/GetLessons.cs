@@ -32,7 +32,7 @@ namespace LearningSite.Web.Server.Handlers
                         Quantity = x.Quantity,
                         PriceStr = x.PriceStr,
                         PaymentUrl = x.PaymentUrl
-                    }).ToListAsync();
+                    }).ToListAsync(cancellationToken);
                 return vm;
             }
 

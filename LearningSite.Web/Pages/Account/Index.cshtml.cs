@@ -1,8 +1,7 @@
 using LearningSite.Web.Server;
-using LearningSite.Web.Server.Entities;
-using Microsoft.AspNetCore.Authorization;
+using LearningSite.Web.Server.Handlers;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -11,18 +10,18 @@ namespace LearningSite.Web.Pages.Account
     public class IndexModel : AppPageModel
     {
         private readonly TimeZoneProvider timeZoneProvider;
-        private readonly AppDbContext db;
+        private readonly IMediator mediator;
 
         public Dictionary<string, string> Claims { get; private set; } = new();
         public List<TimeZoneProvider.Info> TimeZones { get; private set; }
 
         public IndexModel(IServiceProvider serviceProvider,
             TimeZoneProvider timeZoneProvider,
-            AppDbContext db) : base(serviceProvider)
+            IMediator mediator) : base(serviceProvider)
         {
             TimeZones = timeZoneProvider.TimeZones;
             this.timeZoneProvider = timeZoneProvider;
-            this.db = db;
+            this.mediator = mediator;
         }
 
         public SelectListItem[] TimeZoneList
@@ -31,36 +30,45 @@ namespace LearningSite.Web.Pages.Account
         }
 
         [BindProperty]
-        public UserInfoVm? Vm { get; set; }
+        public UserInfoVm Vm { get; set; } = new();
 
-        public IActionResult OnGet()
+        public async Task<IActionResult> OnGet()
         {
             Claims = this.User.Claims.ToDictionary(x => x.Type, x => x.Value);
 
-            Vm = db.AppUsers
-                .Where(x => x.Id == UserId)
-                .Select(x => new UserInfoVm()
-                {
-                    EmailAddress = x.EmailAddress,
-                    Name = x.Name,
-                    TimeZoneId = x.TimeZoneId
-                })
-                .SingleOrDefault();
-            if (Vm is null) return NotFound();
+            var userInfo = await mediator.Send(new GetUserInfo.Query() { UserId = UserId });
+            if (userInfo is null) return NotFound();
+
+            Vm.EmailAddress = userInfo.EmailAddress;
+            Vm.Name = userInfo.Name;
+            Vm.TimeZoneId = userInfo.TimeZoneId;
 
             return Page();
         }
+
+        public async Task<IActionResult> OnPost()
+        {
+            if (!ModelState.IsValid)
+                return Page();
+
+            var query = new UpdateUserInfo.Query();
+            query.User.Id = UserId;
+            query.User.EmailAddress = Vm.EmailAddress;
+            query.User.Name = Vm.Name;
+            query.User.TimeZoneId = Vm.TimeZoneId;
+
+            var rez = await mediator.Send(query);
+
+            return RedirectToPage("/Account/Index");
+        }
+
     }
- 
+
     public class UserInfoVm
     {
         [Required, EmailAddress]
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; } = "";
-
-        [Required]
-        [Display(Name = "Password")]
-        public string Password { get; set; } = "";
 
         [Required]
         [Display(Name = "Name")]

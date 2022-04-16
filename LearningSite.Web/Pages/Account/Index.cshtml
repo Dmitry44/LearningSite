@@ -11,14 +11,14 @@
             <div class="card-header">
                 User Info
             </div>
-            <div x-data="{ disabled: true }" class="card-body">
+            <div x-data="{ disabled: @(Request.Method == "POST" ? "false" : "true") }" class="card-body">
                 <form method="POST">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label asp-for="Vm.EmailAddress"></label>
                                 <input type="text" class="form-control" asp-for="Vm.EmailAddress"
-                                       placeholder="Email Address" readonly />
+                                       placeholder="Email Address" :readonly="disabled" />
                                 <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
                             </div>
                             <div class="form-group">
@@ -26,12 +26,6 @@
                                 <input type="text" class="form-control" asp-for="Vm.Name"
                                        placeholder="Name" :readonly="disabled" />
                                 <span class="text text text-danger" asp-validation-for="Vm.Name"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Vm.Password"></label>
-                                <input class="form-control" asp-for="Vm.Password" type="password"
-                                       placeholder="Password" :readonly="disabled" />
-                                <span class="text text-danger" asp-validation-for="Vm.Password"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Vm.TimeZoneId"></label>
@@ -49,9 +43,9 @@
                                 <button class="btn btn-primary" type="submit" x-show="!disabled">
                                     Save
                                 </button>
-                                <button class="btn btn-secondary" type="button" x-show="!disabled" x-on:click="disabled=true">
+                                <a class="btn btn-secondary" x-show="!disabled" asp-page="/Account/Index">
                                     Cancel
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
