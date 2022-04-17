@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningSite.Web.Pages
 {
@@ -139,6 +140,13 @@ namespace LearningSite.Web.Pages
             db.Lessons.AddRange(lessons);
 
             await db.SaveChangesAsync();
+        }
+
+        public async Task OnGetRecreateSeedDb()
+        {
+            db.Database.EnsureDeleted();
+            db.Database.Migrate();
+            await OnGetSeedDb();
         }
 
     }
