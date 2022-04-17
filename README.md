@@ -4,11 +4,13 @@ Website for managing online lessons.
 
 ## EF Core
 
-- dotnet tool install --global dotnet-ef
-- dotnet tool update --global dotnet-ef
-- dotnet ef database drop
-- dotnet ef migrations add XXX
-- dotnet ef migrations remove
+```
+dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef
+dotnet ef database drop
+dotnet ef migrations add XXX
+dotnet ef migrations remove
+```
 
 ## Links
 
