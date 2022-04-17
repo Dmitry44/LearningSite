@@ -31,7 +31,7 @@ namespace LearningSite.Test.Server.Handlers
             };
 
             //act
-            var rez = await sut.Handle(new UpdateUserInfo.Query() { User = userAfter }, new System.Threading.CancellationToken());
+            var rez = await sut.Handle(new UpdateUserInfo.Request(userAfter), new System.Threading.CancellationToken());
             var rezDb = await db.AppUsers.FirstAsync(x => x.Id == user.Id);
 
             //assert

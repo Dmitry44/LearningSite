@@ -47,11 +47,11 @@ namespace LearningSite.Test.Server.Handlers
             db.SaveChanges();
 
             //act
-            var rez = await sut.Handle(new GetLessons.Query(), new System.Threading.CancellationToken());
+            var rez = await sut.Handle(new GetLessons.Request(), new System.Threading.CancellationToken());
 
             //assert
             Assert.NotNull(rez);
-            Assert.IsType<GetLessons.Vm>(rez);
+            Assert.IsType<GetLessons.Response>(rez);
             Assert.Single(rez.Lessons);
             Assert.Equal(name, rez.Lessons.First().LessonName);
             Assert.Equal(name, rez.Lessons.First().PackageName);

@@ -24,11 +24,11 @@ namespace LearningSite.Test.Server.Handlers
             var user = db.AppUsers.First();
 
             //act
-            var rez = await sut.Handle(new GetUserInfo.Query() { UserId = user.Id }, new System.Threading.CancellationToken());
+            var rez = await sut.Handle(new GetUserInfo.Request(user.Id), new System.Threading.CancellationToken());
 
             //assert
             Assert.NotNull(rez);
-            Assert.IsType<GetUserInfo.Vm>(rez);
+            Assert.IsType<GetUserInfo.Response>(rez);
             Assert.Equal(user.EmailAddress, rez.EmailAddress);
             Assert.Equal(user.Name, rez.Name);
             Assert.Equal(user.TimeZoneId, rez.TimeZoneId);

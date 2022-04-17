@@ -1,4 +1,5 @@
 using LearningSite.Web.Server;
+using LearningSite.Web.Server.Entities;
 using LearningSite.Web.Server.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -36,7 +37,7 @@ namespace LearningSite.Web.Pages.Account
         {
             Claims = this.User.Claims.ToDictionary(x => x.Type, x => x.Value);
 
-            var userInfo = await mediator.Send(new GetUserInfo.Query() { UserId = UserId });
+            var userInfo = await mediator.Send(new GetUserInfo.Request(UserId));
             if (userInfo is null) return NotFound();
 
             Vm.EmailAddress = userInfo.EmailAddress;
@@ -51,11 +52,13 @@ namespace LearningSite.Web.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            var query = new UpdateUserInfo.Query();
-            query.User.Id = UserId;
-            query.User.EmailAddress = Vm.EmailAddress;
-            query.User.Name = Vm.Name;
-            query.User.TimeZoneId = Vm.TimeZoneId;
+            var query = new UpdateUserInfo.Request(new AppUser()
+            {
+                Id = UserId,
+                EmailAddress = Vm.EmailAddress,
+                Name = Vm.Name,
+                TimeZoneId = Vm.TimeZoneId
+            });
 
             var rez = await mediator.Send(query);
 

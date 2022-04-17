@@ -6,11 +6,9 @@ namespace LearningSite.Web.Server.Handlers
 {
     public class UpdateUserInfo
     {
-        public class Query : IRequest {
-            public AppUser User { get; set; } = new();
-        }
+        public record Request(AppUser User) : IRequest;
 
-        public class Handler : IRequestHandler<Query>
+        public class Handler : IRequestHandler<Request>
         {
             private readonly AppDbContext db;
 
@@ -19,7 +17,7 @@ namespace LearningSite.Web.Server.Handlers
                 this.db = db;
             }
 
-            public async Task<Unit> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(Request request, CancellationToken cancellationToken)
             {
                 var user = await db.AppUsers.FirstAsync(x => x.Id == request.User.Id, cancellationToken);
 

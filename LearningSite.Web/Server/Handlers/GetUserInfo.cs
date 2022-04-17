@@ -6,11 +6,9 @@ namespace LearningSite.Web.Server.Handlers
 {
     public class GetUserInfo
     {
-        public class Query : IRequest<Vm> {
-            public int UserId { get; set; }
-        }
+        public record Request(int UserId) : IRequest<Response>;
 
-        public class Handler : IRequestHandler<Query, Vm>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly AppDbContext db;
 
@@ -19,16 +17,11 @@ namespace LearningSite.Web.Server.Handlers
                 this.db = db;
             }
 
-            public async Task<Vm> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
                 var vm = await db.AppUsers
                     .Where(x => x.Id == request.UserId)
-                    .Select(x => new Vm()
-                    {
-                        EmailAddress = x.EmailAddress,
-                        Name = x.Name,
-                        TimeZoneId = x.TimeZoneId
-                    })
+                    .Select(x => new Response(x.EmailAddress, x.Name, x.TimeZoneId))
                     .SingleOrDefaultAsync(cancellationToken);
 
                 return vm!;
@@ -36,12 +29,7 @@ namespace LearningSite.Web.Server.Handlers
 
         }
 
-        public class Vm
-        {
-            public string EmailAddress { get; set; } = "";
-            public string Name { get; set; } = "";
-            public string TimeZoneId { get; set; } = "";
-        }
+        public record Response(string EmailAddress, string Name, string TimeZoneId);
 
     }
 }

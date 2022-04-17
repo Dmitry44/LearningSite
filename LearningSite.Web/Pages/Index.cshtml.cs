@@ -17,11 +17,11 @@ namespace LearningSite.Web.Pages
             this.mediator = mediator;
         }
 
-        public GetLessons.Vm Lessons { get; private set; } = new();
+        public GetLessons.Response Lessons { get; private set; } = new(new());
 
         public async Task<IActionResult> OnGet()
         {
-            Lessons = await mediator.Send(new GetLessons.Query());
+            Lessons = await mediator.Send(new GetLessons.Request());
 
             return Page();
         }

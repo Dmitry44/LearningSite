@@ -6,9 +6,9 @@ namespace LearningSite.Web.Server.Handlers
 {
     public class GetLessons
     {
-        public class Query : IRequest<Vm> { }
+        public record Request : IRequest<Response>;
 
-        public class Handler : IRequestHandler<Query, Vm>
+        public class Handler : IRequestHandler<Request, Response>
         {
             private readonly AppDbContext db;
 
@@ -17,44 +17,36 @@ namespace LearningSite.Web.Server.Handlers
                 this.db = db;
             }
 
-            public async Task<Vm> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
             {
-                var vm = new Vm();
-                vm.Lessons = await db.Packages.Where(x => x.IsActive && x.Lesson.IsActive)
+                var lessons = await db.Packages.Where(x => x.IsActive && x.Lesson.IsActive)
                     .OrderBy(x => x.Lesson.Name).ThenBy(x => x.Minutes).ThenBy(x => x.Quantity)
-                    .Select(x => new LessonRow()
-                    {
-                        PackageId = x.Id,
-                        LessonName = x.Lesson.Name,
-                        PackageName = x.Name,
-                        Decription = String.IsNullOrWhiteSpace(x.Decription) ? x.Lesson.Decription : x.Decription,
-                        Minutes = x.Minutes,
-                        Quantity = x.Quantity,
-                        PriceStr = x.PriceStr,
-                        PaymentUrl = x.PaymentUrl
-                    }).ToListAsync(cancellationToken);
-                return vm;
+                    .Select(x => new LessonRow(
+                        x.Id,
+                        x.Lesson.Name,
+                        x.Name,
+                        String.IsNullOrWhiteSpace(x.Decription) ? x.Lesson.Decription : x.Decription,
+                        x.Minutes,
+                        x.Quantity,
+                        x.PriceStr,
+                        x.PaymentUrl
+                    )).ToListAsync(cancellationToken);
+                return new Response(Lessons: lessons);
             }
 
         }
 
-        public class Vm
-        {
-            public string Title { get; set; } = "Classes";
-            public List<LessonRow> Lessons { get; internal set; } = new();
-        }
+        public record Response(List<LessonRow> Lessons, string Title = "Classes");
 
-        public class LessonRow
-        {
-            public int PackageId { get; internal set; }
-            public string LessonName { get; internal set; } = "";
-            public string PackageName { get; internal set; } = "";
-            public string Decription { get; internal set; } = "";
-            public int Minutes { get; internal set; }
-            public int Quantity { get; internal set; }
-            public string PriceStr { get; internal set; } = "";
-            public string PaymentUrl { get; internal set; } = "";
-        }
+        public record LessonRow(
+            int PackageId,
+            string LessonName,
+            string PackageName,
+            string Decription,
+            int Minutes,
+            int Quantity,
+            string PriceStr,
+            string PaymentUrl);
 
     }
 }
