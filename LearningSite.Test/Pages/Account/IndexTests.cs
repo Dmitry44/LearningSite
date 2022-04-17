@@ -10,8 +10,8 @@ namespace LearningSite.Test.Pages.Account
 {
     public class IndexTests
     {
-        private readonly IServiceProvider serviceProvider = Mock.Of<IServiceProvider>();
         private readonly IMediator mediator = Mock.Of<IMediator>();
+        private readonly TimeZoneProvider timeZoneProvider = Mock.Of<TimeZoneProvider>();
 
         public IndexTests()
         {
@@ -24,7 +24,7 @@ namespace LearningSite.Test.Pages.Account
             using var dbContext = factory.CreateContext();
 
             //arrange
-            var sut = new IndexModel(serviceProvider, new TimeZoneProvider(), mediator);
+            var sut = new IndexModel(timeZoneProvider, mediator);
             sut.PageContext = PageModelHelper.CreateContext();
 
             //act

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,7 +11,7 @@ namespace LearningSite.Web.Server
     [RequireHttps]
     public class AppPageModel : PageModel
     {
-        private readonly IServiceProvider serviceProvider;
+        protected readonly IMediator mediator;
 
         public int UserId { get; private set; }
         public bool IsAuthenticated { get; private set; }
@@ -39,9 +40,9 @@ namespace LearningSite.Web.Server
             return userNameClaim?.Value ?? "";
         }
 
-        public AppPageModel(IServiceProvider serviceProvider)
+        public AppPageModel(IMediator mediator)
         {
-            this.serviceProvider = serviceProvider;
+            this.mediator = mediator;
         }
 
     }

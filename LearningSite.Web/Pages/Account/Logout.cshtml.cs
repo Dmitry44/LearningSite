@@ -1,7 +1,7 @@
 using LearningSite.Web.Server;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LearningSite.Web.Pages.Account
 {
@@ -10,7 +10,7 @@ namespace LearningSite.Web.Pages.Account
     {
         private readonly IUserManager userManager;
 
-        public LogoutModel(IUserManager userManager, IServiceProvider serviceProvider) : base(serviceProvider)
+        public LogoutModel(IUserManager userManager, IMediator mediator) : base(mediator)
         {
             this.userManager = userManager;
         }

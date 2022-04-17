@@ -1,7 +1,6 @@
 ﻿using LearningSite.Web.Server;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace LearningSite.Web.Pages
 {
@@ -10,7 +9,7 @@ namespace LearningSite.Web.Pages
     {
         private readonly ILogger<PrivacyModel> _logger;
 
-        public PrivacyModel(ILogger<PrivacyModel> logger, IServiceProvider serviceProvider) : base(serviceProvider)
+        public PrivacyModel(ILogger<PrivacyModel> logger, IMediator mediator) : base(mediator)
         {
             _logger = logger;
         }

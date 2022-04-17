@@ -10,12 +10,11 @@ namespace LearningSite.Test.Pages
     public class IndexTests
     {
         private readonly IndexModel sut;
-        private readonly IServiceProvider serviceProvider = Mock.Of<IServiceProvider>();
         private readonly IMediator mediator = Mock.Of<IMediator>();
 
         public IndexTests()
         {
-            sut = new IndexModel(serviceProvider, mediator);
+            sut = new IndexModel(mediator);
         }
 
         [Fact]

@@ -1,7 +1,7 @@
 using LearningSite.Web.Server;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 
 namespace LearningSite.Web.Pages
@@ -17,7 +17,7 @@ namespace LearningSite.Web.Pages
 
         private readonly ILogger<ErrorModel> _logger;
 
-        public ErrorModel(ILogger<ErrorModel> logger, IServiceProvider serviceProvider) : base(serviceProvider)
+        public ErrorModel(ILogger<ErrorModel> logger, IMediator mediator) : base(mediator)
         {
             _logger = logger;
         }

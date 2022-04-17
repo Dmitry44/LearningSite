@@ -1,8 +1,8 @@
 using LearningSite.Web.Server;
 using LearningSite.Web.Server.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
@@ -19,7 +19,7 @@ namespace LearningSite.Web.Pages.Account
             IUserManager userManager,
             IUserRepository userRepository,
             TimeZoneProvider timeZoneProvider,
-            IServiceProvider serviceProvider) : base(serviceProvider)
+            IMediator mediator) : base(mediator)
         {
             this.userManager = userManager;
             this.userRepository = userRepository;

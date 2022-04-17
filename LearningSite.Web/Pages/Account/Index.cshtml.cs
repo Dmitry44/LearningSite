@@ -11,18 +11,15 @@ namespace LearningSite.Web.Pages.Account
     public class IndexModel : AppPageModel
     {
         private readonly TimeZoneProvider timeZoneProvider;
-        private readonly IMediator mediator;
 
         public Dictionary<string, string> Claims { get; private set; } = new();
         public List<TimeZoneProvider.Info> TimeZones { get; private set; }
 
-        public IndexModel(IServiceProvider serviceProvider,
-            TimeZoneProvider timeZoneProvider,
-            IMediator mediator) : base(serviceProvider)
+        public IndexModel(TimeZoneProvider timeZoneProvider,
+            IMediator mediator) : base(mediator)
         {
             TimeZones = timeZoneProvider.TimeZones;
             this.timeZoneProvider = timeZoneProvider;
-            this.mediator = mediator;
         }
 
         public SelectListItem[] TimeZoneList

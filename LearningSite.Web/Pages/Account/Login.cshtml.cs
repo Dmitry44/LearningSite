@@ -1,8 +1,8 @@
 using LearningSite.Web.Server;
 using LearningSite.Web.Server.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
 namespace LearningSite.Web.Pages.Account
@@ -16,7 +16,7 @@ namespace LearningSite.Web.Pages.Account
         public LoginModel(
             IUserManager userManager,
             IUserRepository userRepository,
-            IServiceProvider serviceProvider) : base(serviceProvider)
+            IMediator mediator) : base(mediator)
         {
             this.userManager = userManager;
             this.userRepository = userRepository;
