@@ -60,7 +60,8 @@ namespace LearningSite.Web.Server
 
         public async Task SignOut(HttpContext httpContext)
         {
-            await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            await authenticationService.SignOutAsync(httpContext,
+                CookieAuthenticationDefaults.AuthenticationScheme, new AuthenticationProperties());
         }
 
         private List<Claim> GetUserClaims(AppUserVm user)
