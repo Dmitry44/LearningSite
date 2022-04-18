@@ -1,5 +1,5 @@
 using LearningSite.Web.Server;
-using LearningSite.Web.Server.Repositories;
+using LearningSite.Web.Server.Handlers.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,18 +11,12 @@ namespace LearningSite.Web.Pages.Account
     [AllowAnonymous]
     public class SignupModel : AppPageModel
     {
-        private readonly IUserManager userManager;
-        private readonly IUserRepository userRepository;
         private readonly TimeZoneProvider timeZoneProvider;
 
         public SignupModel(
-            IUserManager userManager,
-            IUserRepository userRepository,
             TimeZoneProvider timeZoneProvider,
             IMediator mediator) : base(mediator)
         {
-            this.userManager = userManager;
-            this.userRepository = userRepository;
             this.timeZoneProvider = timeZoneProvider;
         }
 
@@ -47,15 +41,13 @@ namespace LearningSite.Web.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            if (userRepository.IsEmailExists(Vm.EmailAddress))
+            if (await mediator.Send<bool>(new IsEmailExists.Request(Vm.EmailAddress)))
             {
                 ModelState.AddModelError("Vm.EmailAddress", "Email is already in use");
                 return Page();
             }
 
-            var user = userRepository.Signup(Vm);
-
-            await userManager.SignIn(this.HttpContext, user);
+            await mediator.Send(new SignUp.Request(HttpContext, Vm.EmailAddress, Vm.Name, Vm.TimeZoneId, Vm.Password));
 
             return RedirectToPage("/Index");
         }

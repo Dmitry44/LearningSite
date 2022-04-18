@@ -1,5 +1,5 @@
 using LearningSite.Web.Server;
-using LearningSite.Web.Server.Repositories;
+using LearningSite.Web.Server.Handlers.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +10,9 @@ namespace LearningSite.Web.Pages.Account
     [AllowAnonymous]
     public class LoginModel : AppPageModel
     {
-        private readonly IUserManager userManager;
-        private readonly IUserRepository userRepository;
 
-        public LoginModel(
-            IUserManager userManager,
-            IUserRepository userRepository,
-            IMediator mediator) : base(mediator)
+        public LoginModel(IMediator mediator) : base(mediator)
         {
-            this.userManager = userManager;
-            this.userRepository = userRepository;
         }
 
         public void OnGet()
@@ -34,15 +27,11 @@ namespace LearningSite.Web.Pages.Account
             if (!ModelState.IsValid)
                 return Page();
 
-            var user = userRepository.Validate(Vm);
-
-            if (user == null)
+            if (!await mediator.Send<bool>(new SignIn.Request(this.HttpContext, Vm.EmailAddress, Vm.Password)))
             {
                 ModelState.AddModelError("", "Email or Password is incorrect");
                 return Page();
             }
-
-            await userManager.SignIn(this.HttpContext, user);
 
             return LocalRedirect("/Index");
         }
