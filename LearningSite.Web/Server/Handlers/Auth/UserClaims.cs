@@ -5,7 +5,7 @@ namespace LearningSite.Web.Server.Handlers.Auth
 {
     public static class UserClaims
     {
-        public static List<Claim> GetUserClaims(AppUser user)
+        public static List<Claim> GetList(AppUser user)
         {
             List<Claim> claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));

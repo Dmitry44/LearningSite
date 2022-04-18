@@ -51,7 +51,7 @@ namespace LearningSite.Web.Server.Handlers.Auth
                 string authenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 
                 // Generate Claims from DbEntity
-                var claims = UserClaims.GetUserClaims(user);
+                var claims = UserClaims.GetList(user);
 
                 // Add Additional Claims from the Context
                 // which might be useful

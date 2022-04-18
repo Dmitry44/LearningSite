@@ -14,9 +14,6 @@ namespace LearningSite.Test.Server.Handlers.Auth
         [Fact]
         public async Task SignOut_ShoulCallAuthService()
         {
-            using var factory = new AppDbContextFactory();
-            using var db = factory.CreateContext();
-
             //arrange
             var httpContext = Mock.Of<HttpContext>();
             var authServiceMock = new Mock<IAuthenticationService>();
