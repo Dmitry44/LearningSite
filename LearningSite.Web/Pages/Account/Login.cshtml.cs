@@ -41,9 +41,11 @@ namespace LearningSite.Web.Pages.Account
     public class LoginVm
     {
         [Required, EmailAddress]
+        [Display(Name = "Email Address")]
         public string EmailAddress { get; set; } = "";
 
         [Required]
+        [Display(Name = "Password")]
         public string Password { get; set; } = "";
     }
 

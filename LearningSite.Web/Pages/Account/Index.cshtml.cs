@@ -1,10 +1,12 @@
 using LearningSite.Web.Server;
 using LearningSite.Web.Server.Entities;
 using LearningSite.Web.Server.Handlers;
+using LearningSite.Web.Server.Handlers.Auth;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 namespace LearningSite.Web.Pages.Account
 {
@@ -27,7 +29,7 @@ namespace LearningSite.Web.Pages.Account
             get => timeZoneProvider.GetTimeZoneList(Vm.TimeZoneId);
         }
 
-        [BindProperty]
+        //[BindProperty]
         public UserInfoVm Vm { get; set; } = new();
 
         public async Task<IActionResult> OnGet()
@@ -44,7 +46,7 @@ namespace LearningSite.Web.Pages.Account
             return Page();
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPost([Bind] UserInfoVm Vm)
         {
             if (!ModelState.IsValid)
                 return Page();
@@ -57,9 +59,33 @@ namespace LearningSite.Web.Pages.Account
                 TimeZoneId = Vm.TimeZoneId
             });
 
-            var rez = await mediator.Send(query);
+            await mediator.Send(query);
 
             return RedirectToPage("/Account/Index");
+        }
+
+        //[BindProperty]
+        public ChangePasswordVm ChangePasswordVm { get; set; } = new();
+
+        public async Task<IActionResult> OnPostChangePassword([Bind] ChangePasswordVm ChangePasswordVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Partial("_ChangePasswordForm", ChangePasswordVm);
+            }
+
+            var done = await mediator.Send(
+                new ChangePassword.Request(Email, ChangePasswordVm.OldPassword, ChangePasswordVm.NewPassword));
+
+            if (!done)
+            {
+                ModelState.AddModelError("", "Error! Password was not changed");
+                return Partial("_ChangePasswordForm", ChangePasswordVm);
+            }
+
+            var resp = Partial("_ChangePasswordForm", new ChangePasswordVm());
+            resp.StatusCode = (int)HttpStatusCode.Created;
+            return resp;
         }
 
     }
@@ -77,6 +103,17 @@ namespace LearningSite.Web.Pages.Account
         [Required]
         [Display(Name = "Time zone")]
         public string TimeZoneId { get; set; } = "";
+    }
+
+    public class ChangePasswordVm
+    {
+        [Required]
+        [Display(Name = "Old Password")]
+        public string OldPassword { get; set; } = "";
+
+        [Required]
+        [Display(Name = "Old Password")]
+        public string NewPassword { get; set; } = "";
     }
 
 }

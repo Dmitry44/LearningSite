@@ -8,12 +8,12 @@
         <div class="col-md-12">
             <div class="alert alert-danger" role="alert" asp-validation-summary="ModelOnly"></div>
             <div class="form-group">
-                <label asp-for="Vm.EmailAddress">Email Address</label>
+                <label asp-for="Vm.EmailAddress"></label>
                 <input type="text" class="form-control" asp-for="Vm.EmailAddress" placeholder="Email Address" />
                 <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Vm.Password">Password</label>
+                <label asp-for="Vm.Password"></label>
                 <input class="form-control" asp-for="Vm.Password" placeholder="Password" type="password" />
                 <span class="text text-danger" asp-validation-for="Vm.Password"></span>
             </div>
