@@ -3,24 +3,29 @@
 @{
 }
 
-<form method="POST">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-danger" role="alert" asp-validation-summary="ModelOnly"></div>
-            <div class="form-group">
-                <label asp-for="Vm.EmailAddress"></label>
-                <input type="text" class="form-control" asp-for="Vm.EmailAddress" placeholder="Email Address" />
-                <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Vm.Password"></label>
-                <input class="form-control" asp-for="Vm.Password" placeholder="Password" type="password" />
-                <span class="text text-danger" asp-validation-for="Vm.Password"></span>
-            </div>
-            <div class="pt-3">
-                <button class="btn btn-primary" type="submit">Login</button>
-                <a asp-area="" asp-page="/Account/Signup">Signup</a>
+<div class="container" style="height: 80vh;">
+    <div class="row justify-content-center align-content-center flex-column" style="height: 80vh;">
+        <div class="col-xl-4 col-lg-5 col-md-8 col-9 justify-content-center align-content-center">
+            <div class="base-block p-4">
+                <p class="h2">Sign In</p>
+                <form method="POST">
+                    <div class="alert alert-danger" role="alert" asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" asp-for="Vm.EmailAddress" placeholder="Email" />
+                        <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
+                    </div>
+                    <div class="form-group mb-5">
+                        <input class="form-control" asp-for="Vm.Password" placeholder="Password" type="password" />
+                        <span class="text text-danger" asp-validation-for="Vm.Password"></span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <button type="submit" class="btn-primary">
+                            Sign In
+                        </button>
+                        <a class="btn-secondary ml-2 text-decoration-none" asp-area="" asp-page="/Account/Signup">I dont have account</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</div>

@@ -3,133 +3,321 @@
 @{
 }
 
-<div x-data="main">
-    <h3>Account</h3>
+<section class="container-lg main-content">
+    <p class="h2">Account</p>
 
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    User Info
+    <div class="row" x-data="main">
+        <div class="col-lg-3 col-md-4">
+            <div class="base-block">
+                <p class="h3">User Info</p>
+                <form method="POST" x-cloak>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="Vm.EmailAddress"
+                               placeholder="Email Address" :readonly="disabled" />
+                        <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" asp-for="Vm.Name"
+                               placeholder="Name" :readonly="disabled" />
+                        <span class="text text text-danger" asp-validation-for="Vm.Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control form-select" asp-for="Vm.TimeZoneId" asp-items="Model.TimeZoneList"
+                                id="time-zone-id" :readonly="disabled" :disabled="disabled">
+                            <option value="">Select Time Zone</option>
+                        </select>
+                        <span class="text text-danger" asp-validation-for="Vm.TimeZoneId"></span>
+                    </div>
+
+                    <div class="mb-5"></div>
+
+                    <button class="btn btn-primary btn-block" type="button" x-show="disabled" x-on:click="disabled=false">
+                        Edit
+                    </button>
+                    <button class="btn btn-primary" type="submit" x-show="!disabled">
+                        Save
+                    </button>
+                    <a class="btn btn-secondary float-end" x-show="!disabled" asp-page="/Account/Index">
+                        Cancel
+                    </a>
+
+                    <button class="btn btn-primary btn-block mt-1" type="button"
+                            data-bs-toggle="modal" data-bs-target="#changePwdModal" x-show="disabled">
+                        Change Password
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-8">
+            <div class="base-block">
+                <p class="h3">Purchases</p>
+                <div class="lesson-block">
+                    <div class="text">
+                        <p class="num">#19</p>
+                        <p class="title">Fluent English Lesson • 45 min</p>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                data-target="#exampleModalLong">
+                            Set time
+                        </button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form method="POST" x-cloak>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label asp-for="Vm.EmailAddress"></label>
-                                    <input type="text" class="form-control" asp-for="Vm.EmailAddress"
-                                           placeholder="Email Address" :readonly="disabled" />
-                                    <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Vm.Name"></label>
-                                    <input type="text" class="form-control" asp-for="Vm.Name"
-                                           placeholder="Name" :readonly="disabled" />
-                                    <span class="text text text-danger" asp-validation-for="Vm.Name"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Vm.TimeZoneId"></label>
-                                    <select class="form-control form-select" asp-for="Vm.TimeZoneId" asp-items="Model.TimeZoneList"
-                                            id="time-zone-id" :readonly="disabled" :disabled="disabled">
-                                        <option value="">Select Time Zone</option>
-                                    </select>
-                                    <span class="text text-danger" asp-validation-for="Vm.TimeZoneId"></span>
-                                </div>
-
-                                <div class="pt-3">
-                                    <button class="btn btn-primary" type="button" x-show="disabled" x-on:click="disabled=false">
-                                        Edit
-                                    </button>
-                                    <button class="btn btn-primary" type="submit" x-show="!disabled">
-                                        Save
-                                    </button>
-                                    <a class="btn btn-secondary" x-show="!disabled" asp-page="/Account/Index">
-                                        Cancel
-                                    </a>
-
-                                    <button class="btn btn-primary float-end" type="button"
-                                            data-bs-toggle="modal" data-bs-target="#changePwdModal" x-show="disabled">
-                                        Change Password
-                                    </button>
-                                </div>
+                <div class="lesson-block">
+                    <div class="text">
+                        <p class="num">#18</p>
+                        <p class="title">Fluent English Lesson • 45 min</p>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                data-target="#exampleModalLong">
+                            Set time
+                        </button>
+                    </div>
+                </div>
+                <div class="lesson-bundle">
+                    <div class="header">
+                        <p class="title"><b>10 lessons pack</b></p>
+                        <p class="count">5/10 complited</p>
+                    </div>
+                    <div class="lessons">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#17</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link" data-toggle="modal"
+                                   data-target="#exampleModalLong">Set time</a>
                             </div>
                         </div>
-                    </form>
-
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#16</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link" data-toggle="modal"
+                                   data-target="#exampleModalLong">Set time</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#15</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link" data-toggle="modal"
+                                   data-target="#exampleModalLong">Set time</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#14</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/3/2022</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#13</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#12</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#11</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#10</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#9</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/3/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#8</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-bundle">
+                    <div class="header">
+                        <p class="title"><b>5 lessons pack</b></p>
+                        <p class="count">5/5 complited</p>
+                    </div>
+                    <div class="lessons">
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#7</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#6</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#5</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#4</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/3/2022</a>
+                            </div>
+                        </div>
+                        <div class="card muted">
+                            <div class="card-body">
+                                <div class="card-text text-muted">#3</div>
+                                <p class="card-text">Fluent English Lesson<br>45 min</p>
+                                <a href="#" class="card-link">4/8/2022</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-block muted">
+                    <div class="text">
+                        <p class="num">#19</p>
+                        <p class="title">Fluent English Lesson • 45 min</p>
+                    </div>
+                    <div class="buttons"><button type="button" class="btn btn-link btn-sm">4/8/2022</button></div>
+                </div>
+                <div class="lesson-block muted">
+                    <div class="text">
+                        <p class="num">#19</p>
+                        <p class="title">Fluent English Lesson • 45 min</p>
+                    </div>
+                    <div class="buttons"><button type="button" class="btn btn-link btn-sm">4/8/2022</button></div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    Claims
-                </div>
-                <div class="card-body">
-                    <table class="table table-sm table-striped table-hover">
-                        <tr>
-                            <td>
-                                Name
-                            </td>
-                            <td>
-                                Value
-                            </td>
-                        </tr>
-                        @foreach (var item in Model.Claims)
-                        {
-                            <tr>
-                                <td>@item.Key</td>
-                                <td>@item.Value</td>
+            <div class="base-block">
+                <p class="h3">Lessons</p>
+                <div class="table-responsive">
+                    <table width="100%" class="table table-bordered">
+                        <tbody>
+                            <tr class="one-lesson">
+                                <td rowspan="2" class="date">
+                                    <p class="num">4</p>
+                                    <p class="month">April</p>
+                                    <p class="year">2022</p>
+                                </td>
+                                <td>
+                                    <p class="title">Fluent English Lesson</p>
+                                    <p class="time">10:00AM-10:45AM</p>
+                                </td>
+                                <td class="textarea-td">
+                                    <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                                </td>
                             </tr>
-                        }
+                            <tr class="one-lesson">
+                                <td>
+                                    <p class="title">Fluent English Lesson</p>
+                                    <p class="time">10:00AM-10:45AM</p>
+                                </td>
+                                <td class="textarea-td">
+                                    <p class="text">
+                                        <span class="notes" role="textbox" contenteditable>
+                                            Link to
+                                            lessons
+                                            materials: <a href="#"
+                                                          class="inner-link">https://onedrive.com/lin...</a>
+                                        </span>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="one-lesson">
+                                <td class="date">
+                                    <p class="num">3</p>
+                                    <p class="month">April</p>
+                                    <p class="year">2022</p>
+                                </td>
+                                <td>
+                                    <p class="title">Fluent English Lesson</p>
+                                    <p class="time">10:00AM-10:45AM</p>
+                                </td>
+                                <td class="textarea-td">
+                                    <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                                </td>
+                            </tr>
+                            <tr class="one-lesson">
+                                <td rowspan="3" class="date">
+                                    <p class="num">1</p>
+                                    <p class="month">April</p>
+                                    <p class="year">2022</p>
+                                </td>
+                                <td>
+                                    <p class="title">Fluent English Lesson</p>
+                                    <p class="time">10:00AM-10:45AM</p>
+                                </td>
+                                <td class="textarea-td">
+                                    <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                                </td>
+                            </tr>
+                            <tr class="one-lesson">
+                                <td>
+                                    <p class="title">Fluent English Lesson</p>
+                                    <p class="time">10:00AM-10:45AM</p>
+                                </td>
+                                <td class="textarea-td">
+                                    <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                                </td>
+                            </tr>
+                            <tr class="one-lesson">
+                                <td>
+                                    <p class="title">Fluent English Lesson</p>
+                                    <p class="time">10:00AM-10:45AM</p>
+                                </td>
+                                <td class="textarea-td">
+                                    <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
-                    Time Zones
-                </div>
-                <div class="card-body">
-                    <table class="table table-sm table-striped table-hover">
-                        <tr>
-                            <th>System Id</th>
-                            <th>System Name</th>
-                            <th>Iana Id</th>
-                        </tr>
-                        @foreach (var item in Model.TimeZones)
-                        {
-                            <tr>
-                                <td>@item.SystemId</td>
-                                <td>@item.SystemName</td>
-                                <td>@item.IanaId</td>
-                            </tr>
-                        }
-                    </table>
+        <!-- Change Password Modal -->
+        <div class="modal fade" id="changePwdModal" x-ref="changePwdModal" tabindex="-1"
+             aria-labelledby="changePwdModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <partial name="_ChangePasswordForm" model="Model.ChangePasswordVm" />
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Change Password Modal -->
-    <div class="modal fade" id="changePwdModal" x-ref="changePwdModal" tabindex="-1"
-         aria-labelledby="changePwdModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="changePwdModalLabel">Change Password</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <partial name="_ChangePasswordForm" model="Model.ChangePasswordVm" />
-            </div>
-        </div>
     </div>
-
-</div>
+</section>
 
 @section Scripts {
 <script type="text/javascript">
@@ -149,4 +337,4 @@
     });
 
 </script>
-}
+    }

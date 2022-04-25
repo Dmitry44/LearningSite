@@ -14,13 +14,9 @@ namespace LearningSite.Web.Pages.Account
     {
         private readonly TimeZoneProvider timeZoneProvider;
 
-        public Dictionary<string, string> Claims { get; private set; } = new();
-        public List<TimeZoneProvider.Info> TimeZones { get; private set; }
-
         public IndexModel(TimeZoneProvider timeZoneProvider,
             IMediator mediator) : base(mediator)
         {
-            TimeZones = timeZoneProvider.TimeZones;
             this.timeZoneProvider = timeZoneProvider;
         }
 
@@ -34,8 +30,6 @@ namespace LearningSite.Web.Pages.Account
 
         public async Task<IActionResult> OnGet()
         {
-            Claims = this.User.Claims.ToDictionary(x => x.Type, x => x.Value);
-
             var userInfo = await mediator.Send(new GetUserInfo.Request(UserId));
             if (userInfo is null) return NotFound();
 

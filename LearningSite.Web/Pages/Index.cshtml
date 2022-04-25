@@ -1,56 +1,175 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="container-md home-page">
 
-<div x-data='booking' x-cloak x-show="lessons.length">
-    <h3>Booking</h3>
+    <div class="row">
+        <div class="col-xl-8 col-lg-8">
+            <div class="embed-responsive embed-responsive-16by9 video-mp">
+                <video class="" src="images/video.mp4" poster="images/cover.png" controls
+                       controlslist="nodownload"></video>
+            </div>
+            <div class="tag-list">
+                <div class="tag">IELTS examiner</div>
+                <div class="tag">DELTA qualified</div>
+            </div>
+            <p class="h4">About me</p>
+            <p class="prg mx-0">
+                Hi! My name is Nicolas Luna! I was born in New Mexico, USA but I grew up in a small
+                town
+                in Mexico (Cholula). My mother is a writer and a literary editor and my father is a quantum chaos
+                physicist. When I was 19 we moved to Germany for a year and since then the travel bug has gotten me!
+                I have since lived in Hungary, the USA, Mexico and Thailand as well as traveled quite a bit. I
+                studied Cultural Anthropology at UCSC and later got my PGCE (teaching degree) from the University of
+                Nottingham. I am also a visual artist and a naturalist, so when I'm not teaching you can find me
+                drawing or exploring nature!
+            </p>
+            <p class="prg mx-0">
+                My 14+ years of diverse teaching, learning and work experience have developed me
+                into an
+                extremely dynamic language coach, which allows me to give my students an absolutely personalized
+                learning journey. My method is based on the Pareto Principle (80/20 rule) and the Fail Fast/Learn
+                Fast Technique. Two of my specialties are helping people escape the dreaded Language Plateau and
+                preparing them for public speaking, for which I have extensive experience, including coaching TEDx
+                speakers. We will work hard but have a lot of fun as well. Allow me to help you reach your work and
+                life goals for which language has been the main obstacle!
+            </p>
+            <div class="msection">
+                <p class="h4 hsl">My teaching material</p>
+                <div class="material-parent d-flex flex-row flex-wrap">
+                    <div class="material"><i class="i-svg size-32 file"></i><span>Documents</span></div>
+                    <div class="material"><i class="i-svg size-32 news"></i><span>Articles and news</span></div>
+                    <div class="material"><i class="i-svg size-32 pdf"></i><span>PDF file</span></div>
+                    <div class="material">
+                        <i class="i-svg size-32 pres"></i><span>Presentation slides/PPT</span>
+                    </div>
+                    <div class="material"><i class="i-svg size-32 audio"></i><span>Audio files</span></div>
+                    <div class="material"><i class="i-svg size-32 check"></i><span>Quizzes</span></div>
+                    <div class="material"><i class="i-svg size-32 image"></i><span>Image files</span></div>
+                    <div class="material"><i class="i-svg size-32 video"></i><span>Video files</span></div>
+                    <div class="material">
+                        <i class="i-svg size-32 tach"></i><span>Test templates and examples</span>
+                    </div>
+                    <div class="material"><i class="i-svg size-32 class"></i><span>Homework Assignments</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 ml-lg-auto">
+            <p class="h4 mx-minus hsm">Work Experience</p>
+            <div class="timeline d-md-flex flex-md-row flex-md-wrap  d-flex flex-row flex-wrap">
+                <div class="txt">
+                    <div class="title">2021 – 2022</div>
+                    <div class="subtxt">Language Coach and Consultant Italki</div>
+                </div>
+                <div class="txt">
+                    <div class="title">2018 - 2022</div>
+                    <div class="subtxt">Language Coach and Consultant Italki</div>
+                </div>
+                <div class="txt">
+                    <div class="title">2016 - 2019</div>
+                    <div class="subtxt">Online English Teacher Hujiang Education Company Ltd.</div>
+                </div>
+                <div class="txt">
+                    <div class="title">2016 - 2017</div>
+                    <div class="subtxt">
+                        Art Instructor and Director of International Affairs Rajamangala University
+                        of Technology Lanna
+                    </div>
+                </div>
+                <div class="txt">
+                    <div class="title">2010 - 2014</div>
+                    <div class="subtxt">Art and Social Studies Teacher Varee Chiang Mai International School</div>
+                </div>
+                <div class="txt">
+                    <div class="title">2008 - 2010</div>
+                    <div class="subtxt">
+                        Assistant to the Superintendent for International Affairs The American
+                        School of Puebla
+                    </div>
+                </div>
+            </div>
 
-    <h4 x-text="vm.title"></h4>
-    <div class="btn-group" role="group" :aria-label="vm.title">
-        <template x-for="i in lessons" :key="i">
-            <button type="button"
-                :class="{ 'btn': true, 'btn-primary': i == selected.lessonName, 'btn-secondary': i != selected.lessonName, 'btn-lg mx-2': true }"
-                x-text="i"
-                x-on:click="setLesson(i)">
-            </button>
-        </template>
+            <p class="h4 mx-minus hsm">Education</p>
+            <div class="timeline d-md-flex flex-md-row flex-md-wrap d-flex flex-row flex-wrap">
+                <div class="txt">
+                    <div class="title">2011 - 2012</div>
+                    <div class="subtxt">
+                        University of Nottingham
+                        Post Graduate Certificate in Education (international) with Merit
+                    </div>
+                </div>
+                <div class="txt">
+                    <div class="title">2004 - 2020</div>
+                    <div class="subtxt">
+                        Bachelor's - Cultural Anthropology The University of California at Santa
+                        Cruz
+                    </div>
+                </div>
+            </div>
+
+            <div class="certificate">
+                <div class="title d-flex flex-xl-row flex-lg-column flex-sm-row">
+                    <i class="i-svg size-40 white certificate"></i><span>
+                        Certificate
+                        TESOL/TESL
+                        Oxford
+                        Seminars 2007
+                    </span>
+                </div>
+                <div class="text">
+                    60 hour TESOL Certificate, which I studied in person at the Institution's
+                    facilities
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h4>Duration</h4>
-    <div class="btn-group" role="group" aria-label="Durations">
-        <template x-for="i in getDurations()" :key="i">
-            <button type="button"
-                :class="{ 'btn': true, 'btn-primary': i == selected.minutes, 'btn-secondary': i != selected.minutes, 'btn-lg mx-2': true }"
-                x-text="i"
-                x-on:click="setDuration(i)">
-            </button>
-        </template>
-    </div>
+    <div x-data='booking' x-cloak x-show="lessons.length">
+        <h3>Booking</h3>
 
-    <h4>Quantity</h4>
-    <div class="btn-group" role="group" aria-label="Quantity">
-        <template x-for="i in getQuantities()" :key="i">
-            <button type="button"
-                :class="{ 'btn': true, 'btn-primary': i == selected.quantity, 'btn-secondary': i != selected.quantity, 'btn-lg mx-2': true }"
-                x-text="i"
-                x-on:click="setQuantity(i)">
-            </button>
-        </template>
-    </div>
+        <h4 x-text="vm.title"></h4>
+        <div class="btn-group" role="group" :aria-label="vm.title">
+            <template x-for="i in lessons" :key="i">
+                <button type="button"
+                        :class="{ 'btn': true, 'btn-primary': i == selected.lessonName, 'btn-secondary': i != selected.lessonName, 'btn-lg mx-2': true }"
+                        x-text="i"
+                        x-on:click="setLesson(i)">
+                </button>
+            </template>
+        </div>
 
-    <div x-text="selected.priceStr"></div>
-    <div x-text="selected.decription"></div>
-    <div>
-        <a class="btn btn-primary btn-lg mx-2" :href="selected.paymentUrl">Buy</a>
+        <h4>Duration</h4>
+        <div class="btn-group" role="group" aria-label="Durations">
+            <template x-for="i in getDurations()" :key="i">
+                <button type="button"
+                        :class="{ 'btn': true, 'btn-primary': i == selected.minutes, 'btn-secondary': i != selected.minutes, 'btn-lg mx-2': true }"
+                        x-text="i"
+                        x-on:click="setDuration(i)">
+                </button>
+            </template>
+        </div>
+
+        <h4>Quantity</h4>
+        <div class="btn-group" role="group" aria-label="Quantity">
+            <template x-for="i in getQuantities()" :key="i">
+                <button type="button"
+                        :class="{ 'btn': true, 'btn-primary': i == selected.quantity, 'btn-secondary': i != selected.quantity, 'btn-lg mx-2': true }"
+                        x-text="i"
+                        x-on:click="setQuantity(i)">
+                </button>
+            </template>
+        </div>
+
+        <div x-text="selected.priceStr"></div>
+        <div x-text="selected.decription"></div>
+        <div>
+            <a class="btn btn-primary btn-lg mx-2" :href="selected.paymentUrl">Buy</a>
+        </div>
     </div>
-</div>
+</section>
+
 
 @section Scripts {
 <script type="text/javascript">
