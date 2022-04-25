@@ -231,9 +231,6 @@ namespace LearningSite.Web.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("LessonId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("Minutes")
                         .HasColumnType("INTEGER");
 
@@ -251,8 +248,6 @@ namespace LearningSite.Web.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LessonId");
 
                     b.HasIndex("PackageId");
 
@@ -307,12 +302,6 @@ namespace LearningSite.Web.Migrations
 
             modelBuilder.Entity("LearningSite.Web.Server.Entities.Purchase", b =>
                 {
-                    b.HasOne("LearningSite.Web.Server.Entities.Lesson", "Lesson")
-                        .WithMany()
-                        .HasForeignKey("LessonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("LearningSite.Web.Server.Entities.Package", "Package")
                         .WithMany()
                         .HasForeignKey("PackageId")
@@ -324,8 +313,6 @@ namespace LearningSite.Web.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lesson");
 
                     b.Navigation("Package");
 

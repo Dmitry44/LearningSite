@@ -28,6 +28,13 @@ namespace LearningSite.Web.Pages
 
         }
 
+        public async Task OnGetRecreateSeedDb()
+        {
+            db.Database.EnsureDeleted();
+            db.Database.Migrate();
+            await OnGetSeedDb();
+        }
+
         public async Task OnGetSeedDb()
         {
             var appUsers = new List<AppUser>
@@ -139,14 +146,52 @@ namespace LearningSite.Web.Pages
             };
             db.Lessons.AddRange(lessons);
 
-            await db.SaveChangesAsync();
-        }
+            var user = appUsers.First(x => x.EmailAddress == "d@d.d" && x.IsActive);
+            var package1 = lessons.SelectMany(x => x.Packages)
+                .Where(x => x.IsActive && x.Lesson.Name == "English" && x.Name == "English 10 60" && x.IsActive)
+                .First();
+            var package2 = lessons.SelectMany(x => x.Packages)
+                .Where(x => x.IsActive && x.Lesson.Name == "Drawing" && x.IsActive)
+                .First();
 
-        public async Task OnGetRecreateSeedDb()
-        {
-            db.Database.EnsureDeleted();
-            db.Database.Migrate();
-            await OnGetSeedDb();
+            var purchases = new List<Purchase>() {
+                new Purchase()
+                {
+                    User = user,
+                    Package = package1,
+                    IsActive = true,
+                    Quantity = package1.Quantity,
+                    BookedQuantity = 2,
+                    Minutes = package1.Minutes,
+                    Name = $"{package1.Lesson.Name}: {package1.Name}",
+                    CreatedAt = DateTime.UtcNow.AddDays(-5)
+                },
+                new Purchase()
+                {
+                    User = user,
+                    Package = package1,
+                    IsActive = false,
+                    Quantity = package1.Quantity,
+                    BookedQuantity = package1.Quantity,
+                    Minutes = package1.Minutes,
+                    Name = $"{package1.Lesson.Name}: {package1.Name}",
+                    CreatedAt = DateTime.UtcNow.AddDays(-50)
+                },
+                new Purchase()
+                {
+                    User = user,
+                    Package = package2,
+                    IsActive = true,
+                    Quantity = package2.Quantity,
+                    BookedQuantity = 0,
+                    Minutes = package2.Minutes,
+                    Name = $"{package2.Lesson.Name}: {package2.Name}",
+                    CreatedAt = DateTime.UtcNow.AddDays(-2)
+                }
+            };
+            db.Purchases.AddRange(purchases);
+
+            await db.SaveChangesAsync();
         }
 
     }

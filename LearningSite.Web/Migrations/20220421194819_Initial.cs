@@ -140,7 +140,6 @@ namespace LearningSite.Web.Migrations
                     BookedQuantity = table.Column<int>(type: "INTEGER", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     IsActive = table.Column<bool>(type: "INTEGER", nullable: false),
-                    LessonId = table.Column<int>(type: "INTEGER", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
                     PackageId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -151,12 +150,6 @@ namespace LearningSite.Web.Migrations
                         name: "FK_Purchases_AppUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AppUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Purchases_Lessons_LessonId",
-                        column: x => x.LessonId,
-                        principalTable: "Lessons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -219,11 +212,6 @@ namespace LearningSite.Web.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Packages_LessonId",
                 table: "Packages",
-                column: "LessonId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Purchases_LessonId",
-                table: "Purchases",
                 column: "LessonId");
 
             migrationBuilder.CreateIndex(

@@ -13,9 +13,6 @@ namespace LearningSite.Web.Server.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsActive { get; set; }
 
-        public int LessonId { get; set; }
-        public virtual Lesson Lesson { get; set; } = new();
-
         public int UserId { get; set; }
         public virtual AppUser User { get; set; } = new();
 
