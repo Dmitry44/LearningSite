@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <link rel="stylesheet" href="scss/main.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-lg flex-lg-row-reverse my-2 my-lg-0">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="btn">
+                <button class="btn btn-primary" type="button">Book Now</button>
+            </div>
+            <div class="collapse navbar-collapse px-2" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articles/index.html">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lessons.html">Lessons</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html">Settings</a>
+                    </li>
+                    <li class="nav-item form-inline">
+                        <a class="nav-link" href="account.html">John S.</a>
+                        <button class="btn-round" type="button" onclick="location.href='signin.html';">Log out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container-lg main-content">
+        <p class="h2">Schedule</p>
+        <div class="base-block">
+            <form class="grid-calendar-sel">
+                <div class="calendar__opts">
+                    <select name="calendar__month" id="calendar__month">
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option selected="">April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+
+                    <select name="calendar__year" id="calendar__year">
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option selected="">2022</option>
+                    </select>
+                </div>
+
+                <div class="calendar__buttons">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Unset lessons<span class="badge badge-pill badge-dark ml-2" id="badge_qnt">3</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="calendar-body">
+                <div class="calendar-title">
+                    <div class="cell empty"></div>
+                    <div class="cell">Mon, 2 April</div>
+                    <div class="cell">Tue, 3 April</div>
+                    <div class="cell">Wen, 4 April</div>
+                    <div class="cell">Thu, 5 April</div>
+                    <div class="cell">Fri, 6 April</div>
+                    <div class="cell">Sat, 7 April</div>
+                    <div class="cell">Sun, 8 April</div>
+                </div>
+
+
+                <div class="calendar-cells">
+                    <div class="calendar-time">
+                        <div class="cell">00:00 – 00:30</div>
+                        <div class="cell">01:00 – 01:30</div>
+                        <div class="cell">02:00 – 02:30</div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell mine-selection"></div>
+                        <div class="cell unavalible"></div>
+                        <div class="cell"></div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell unavalible"></div>
+                        <div class="cell unavalible"></div>
+                        <div class="cell"></div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell mine-selection"></div>
+                        <div class="cell"></div>
+                        <div class="cell unavalible"></div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell"></div>
+                        <div class="cell mine-selection"></div>
+                        <div class="cell"></div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell"></div>
+                        <div class="cell unavalible"></div>
+                        <div class="cell selected"></div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell unavalible"></div>
+                        <div class="cell unavalible"></div>
+                        <div class="cell unavalible"></div>
+                    </div>
+                    <div class="calendar-week-day">
+                        <div class="cell unavalible"></div>
+                        <div class="cell unavalible"></div>
+                        <div class="cell unavalible"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row align-items-start justify-content-between mt-4">
+                <div class="final-set-time flex-wrap" id="final-set-time">
+                    <div class="time">
+                        <span>Tue, 5 April • 07:30 - 08:30</span><i class="fa-solid fa-xmark ml-2"></i>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-primary">
+                    Finish
+                </button>
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="../../npm/jquery%403.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="../../npm/bootstrap%404.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

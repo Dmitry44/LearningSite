@@ -1,4 +1,5 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+﻿@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 /*!
  * Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com
@@ -22772,9 +22773,6 @@ input {
     outline: none;
     border: 0;
     padding: 8px 12px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
 }
 
 select {
@@ -23536,6 +23534,11 @@ select {
         background-image: url("../images/icons/check.svg") !important;
     }
 
+    .i-svg.checkbox::before {
+        content: ' ';
+        background-image: url("../images/icons/checkbox.svg") !important;
+    }
+
     .i-svg.class::before {
         content: ' ';
         background-image: url("../images/icons/class.svg") !important;
@@ -23549,6 +23552,11 @@ select {
     .i-svg.image::before {
         content: ' ';
         background-image: url("../images/icons/image.svg") !important;
+    }
+
+    .i-svg.left::before {
+        content: ' ';
+        background-image: url("../images/icons/left.svg") !important;
     }
 
     .i-svg.news::before {
@@ -23566,9 +23574,19 @@ select {
         background-image: url("../images/icons/pres.svg") !important;
     }
 
+    .i-svg.right::before {
+        content: ' ';
+        background-image: url("../images/icons/right.svg") !important;
+    }
+
     .i-svg.tach::before {
         content: ' ';
         background-image: url("../images/icons/tach.svg") !important;
+    }
+
+    .i-svg.user::before {
+        content: ' ';
+        background-image: url("../images/icons/user.svg") !important;
     }
 
     .i-svg.video::before {
@@ -23656,6 +23674,7 @@ select {
         font-weight: 700;
         font-size: 16px;
         line-height: 19px;
+        margin-left: -10px;
         color: #FFFFFF;
     }
 
@@ -23675,6 +23694,346 @@ select {
 .h4.hsl {
     margin: 60px 0px 30px;
 }
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.carousel-arrows {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+    .carousel-arrows .carousel-control-prev,
+    .carousel-arrows .carousel-control-next {
+        position: relative;
+        display: block;
+        width: auto;
+    }
+
+    .carousel-arrows .carousel-control-prev-icon,
+    .carousel-arrows .carousel-control-next-icon {
+        width: 32px;
+        height: 32px;
+        margin-left: 8px;
+    }
+
+    .carousel-arrows .carousel-control-prev-icon {
+        background-image: url("../images/icons/left.svg") !important;
+    }
+
+    .carousel-arrows .carousel-control-next-icon {
+        background-image: url("../images/icons/right.svg") !important;
+    }
+
+.review {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+}
+
+    .review .review-item {
+        width: 31%;
+        height: auto;
+        border-radius: 6px;
+        border: 1px solid #000000;
+        padding: 30px 28px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+
+        .review .review-item .text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            color: #000000;
+            -webkit-transition: all opacity 0.2s ease;
+            transition: all opacity 0.2s ease;
+            cursor: default;
+        }
+
+            .review .review-item .text::after {
+                content: 'Read full review →';
+                cursor: pointer;
+                display: block;
+                margin-top: 16px;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 19px;
+                -webkit-text-decoration-line: none;
+                text-decoration-line: none;
+                color: #000000;
+                -webkit-transition: all opacity 0.2s ease;
+                transition: all opacity 0.2s ease;
+                opacity: 0.4;
+            }
+
+            .review .review-item .text:hover::after {
+                -webkit-transition: all opacity 0.2s ease;
+                transition: all opacity 0.2s ease;
+                opacity: 1;
+            }
+
+        .review .review-item .btm-info {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+            .review .review-item .btm-info .left .name,
+            .review .review-item .btm-info .left .date {
+                margin: 0;
+            }
+
+            .review .review-item .btm-info .left .name {
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 29px;
+                color: #000000;
+            }
+
+            .review .review-item .btm-info .left .date {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 19px;
+                color: #000000;
+                opacity: 0.4;
+                margin-top: 4px;
+            }
+
+            .review .review-item .btm-info .right .i-svg {
+                height: 54px;
+                width: 54px;
+            }
+
+.section-margin {
+    margin-top: 120px;
+}
+
+.form-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+    .form-row .form-check {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1;
+        flex: 1 1;
+        padding-left: 0px;
+        padding-right: 12px;
+    }
+
+.form-label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    margin: 32px 0 16px;
+}
+
+.form-check-input {
+    display: none;
+}
+
+    .form-check-input + label {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        padding: 16px 12px;
+        background: #FFFFFF;
+        border: 1px solid #E7E7E7;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.06);
+        box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.06);
+        border-radius: 6px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+        cursor: pointer;
+        -webkit-transition: background 0.2s ease-out, border 0.2s ease-out;
+        transition: background 0.2s ease-out, border 0.2s ease-out;
+    }
+
+        .form-check-input + label .i-svg {
+            opacity: 0;
+        }
+
+        .form-check-input + label:hover {
+            background: #f1f1f1;
+            border: 1px solid #d0d0d0;
+            -webkit-transition: background 0.2s ease-out, border 0.2s ease-out;
+            transition: background 0.2s ease-out, border 0.2s ease-out;
+        }
+
+    .form-check-input:checked + label {
+        background-color: #000000;
+        color: #FFFFFF;
+        -webkit-transition: background 0.2s ease-out, border 0.2s ease-out;
+        transition: background 0.2s ease-out, border 0.2s ease-out;
+    }
+
+        .form-check-input:checked + label .i-svg {
+            opacity: 1;
+        }
+
+.booking-h {
+    margin-top: 110px;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 44px;
+    color: #000000;
+}
+
+    .booking-h span {
+        font-weight: 300;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+.booking {
+    margin-top: 24px;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 16px 48px;
+}
+
+.check-block {
+    padding: 52px 90px 30px 60px;
+    background: -webkit-gradient(linear, left bottom, left top, from(#FFFFFF), to(#FFFFFF)), #FEF9F3;
+    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FEF9F3;
+    -webkit-box-shadow: 0px 12px 38px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 12px 38px rgba(0, 0, 0, 0.04);
+}
+
+    .check-block .description {
+        margin-top: 36px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+        color: #000000;
+        opacity: 0.8;
+    }
+
+    .check-block .tags {
+        margin-top: 200px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+
+        .check-block .tags .tag {
+            opacity: 0.8;
+            border: 1.6px solid #161616;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 6px;
+            padding: 10px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+            margin-right: 20px;
+            cursor: default;
+        }
+
+.list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+    .list .list-item {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+        margin-bottom: 18px;
+    }
+
+        .list .list-item .name,
+        .list .list-item .result {
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-align: right;
+            color: #000000;
+            -webkit-box-flex: 0;
+            -ms-flex-positive: 0;
+            flex-grow: 0;
+        }
+
+        .list .list-item .dot-line {
+            height: 1px;
+            border-bottom: 2px dotted #1e1e1e;
+            margin: 0px 8px 4px;
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+        }
 
 @media screen and (max-width: 1200px) {
     .article-title::after {
@@ -23733,6 +24092,29 @@ select {
     .h4.hsm {
         margin: 60px 0px 30px;
         padding: 15px;
+    }
+
+    .review {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        width: 100%;
+    }
+
+        .review .review-item {
+            width: 95%;
+            margin-bottom: 20px;
+        }
+
+    .section-title {
+        margin: 0px 20px 15px;
     }
 }
 
