@@ -14,7 +14,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav x-data="{ menuSelected: '@ViewData["MenuSelected"]' }" class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container-lg flex-lg-row-reverse my-2 my-lg-0">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,30 +25,30 @@
             </div>
             <div class="collapse navbar-collapse px-2" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                    <li class="nav-item" :class="menuSelected == 'Home' && 'active'">
+                        <a class="nav-link" asp-area="" asp-page="/Index">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" :class="menuSelected == 'Articles' && 'active'">
                         <a class="nav-link" href="#">Articles</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" :class="menuSelected == 'Lessons' && 'active'">
                         <a class="nav-link" href="#">Lessons</a>
                     </li>
                     @if (app.IsAuthenticated)
                     {
-                        <li class="nav-item active">
+                        <li class="nav-item" :class="menuSelected == 'Schedule' && 'active'">
                             <a class="nav-link" asp-page="/Schedule/Index">Schedule</a>
                         </li>
                     }
                     @if (app.IsAdmin)
                     {
-                        <li class="nav-item">
+                        <li class="nav-item" :class="menuSelected == 'Settings' && 'active'">
                             <a class="nav-link" asp-page="/Settings/Index">Settings</a>
                         </li>
                     }
                     @if (app.IsAuthenticated)
                     {
-                        <li class="nav-item">
+                        <li class="nav-item" :class="menuSelected == 'Account' && 'active'">
                             <a class="nav-link" asp-page="/Account/Index">
                                 @app.UserName
                             </a>
@@ -59,10 +59,10 @@
                     }
                     else
                     {
-                        <li class="nav-item">
+                        <li class="nav-item" :class="menuSelected == 'Signup' && 'active'">
                             <a class="nav-link" asp-area="" asp-page="/Account/Signup">Sign up</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" :class="menuSelected == 'Signin' && 'active'">
                             <a class="nav-link" asp-area="" asp-page="/Account/Login">Sign in</a>
                         </li>
                     }
