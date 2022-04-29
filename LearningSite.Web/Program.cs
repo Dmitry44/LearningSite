@@ -1,6 +1,5 @@
 using LearningSite.Web.Server;
 using LearningSite.Web.Server.Entities;
-using LearningSite.Web.Server.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -10,9 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
-builder.Services.AddScoped<IUserManager, UserManager>();
-builder.Services.AddScoped<IUserRepository, UserRepository>(); 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
