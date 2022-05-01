@@ -85,6 +85,7 @@ namespace LearningSite.Test.Server
             Assert.Single(sut.Periods);
             Assert.Equal(DateTime.MinValue, sut.Periods.First().Start);
             Assert.Equal(DateTime.MaxValue, sut.Periods.Last().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -104,6 +105,7 @@ namespace LearningSite.Test.Server
             Assert.Equal(new(2022, 4, 2), sut.Periods.First().End);
             Assert.Equal(new(2022, 6, 1), sut.Periods.Last().Start);
             Assert.Equal(new(2022, 6, 2), sut.Periods.Last().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Theory]
@@ -123,6 +125,7 @@ namespace LearningSite.Test.Server
             Assert.Single(sut.Periods);
             Assert.Equal(start2, sut.Periods.First().Start);
             Assert.Equal(end1, sut.Periods.First().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Theory]
@@ -143,6 +146,7 @@ namespace LearningSite.Test.Server
             Assert.Equal(end1, sut.Periods.First().End);
             Assert.Equal(end1, sut.Periods.Last().Start);
             Assert.Equal(end2, sut.Periods.Last().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -162,6 +166,7 @@ namespace LearningSite.Test.Server
             Assert.Equal(new(2022, 4, 15), sut.Periods.First().End);
             Assert.Equal(new(2022, 4, 20), sut.Periods.Last().Start);
             Assert.Equal(new(2022, 4, 25), sut.Periods.Last().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -179,6 +184,7 @@ namespace LearningSite.Test.Server
             Assert.Single(sut.Periods);
             Assert.Equal(new(2022, 4, 10), sut.Periods.First().Start);
             Assert.Equal(new(2022, 4, 20), sut.Periods.First().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -200,6 +206,7 @@ namespace LearningSite.Test.Server
             Assert.Equal(new(2022, 4, 20), sut.Periods.First().End);
             Assert.Equal(new(2022, 4, 22), sut.Periods.Last().Start);
             Assert.Equal(new(2022, 4, 30), sut.Periods.Last().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -216,6 +223,7 @@ namespace LearningSite.Test.Server
             Assert.Single(sut.Periods);
             Assert.Equal(new(2022, 4, 10), sut.Periods.First().Start);
             Assert.Equal(new(2022, 4, 15), sut.Periods.First().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -234,6 +242,7 @@ namespace LearningSite.Test.Server
             Assert.Equal(new(2022, 4, 12), sut.Periods.First().End);
             Assert.Equal(new(2022, 4, 14), sut.Periods.Last().Start);
             Assert.Equal(new(2022, 4, 20), sut.Periods.Last().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Theory]
@@ -252,6 +261,7 @@ namespace LearningSite.Test.Server
 
             //assert
             Assert.Empty(sut.Periods);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -268,6 +278,7 @@ namespace LearningSite.Test.Server
             Assert.Single(sut.Periods);
             Assert.Equal(new(2022, 4, 12), sut.Periods.First().Start);
             Assert.Equal(new(2022, 4, 20), sut.Periods.First().End);
+            Assert.True(sut.CheckLinearity());
         }
 
         [Fact]
@@ -284,6 +295,7 @@ namespace LearningSite.Test.Server
             Assert.Single(sut.Periods);
             Assert.Equal(new(2022, 4, 10), sut.Periods.First().Start);
             Assert.Equal(new(2022, 4, 15), sut.Periods.First().End);
+            Assert.True(sut.CheckLinearity());
         }
 
     }

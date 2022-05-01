@@ -156,6 +156,17 @@ namespace LearningSite.Web.Server
             if (delete.Any()) periods.RemoveWhere(period => delete.Contains(period));
         }
 
+        public bool CheckLinearity()
+        {
+            var curDate = DateTime.MinValue;
+            foreach (var period in periods)
+            {
+                if (period.Start < curDate) return false;
+                curDate = period.End;
+            }
+            return true;
+        }
+
     }
 
 }
