@@ -1,3 +1,4 @@
+using LearningSite.Web.Server;
 using LearningSite.Web.Server.Entities;
 using LearningSite.Web.Server.Helpers;
 using Microsoft.AspNetCore.Authorization;
@@ -12,10 +13,12 @@ namespace LearningSite.Web.Pages
     public class TestModel : PageModel
     {
         private readonly AppDbContext db;
+        private readonly SiteSettings siteSettings;
 
-        public TestModel(AppDbContext db)
+        public TestModel(AppDbContext db, SiteSettings siteSettings)
         {
             this.db = db;
+            this.siteSettings = siteSettings;
         }
 
         public void OnGet()
@@ -37,6 +40,10 @@ namespace LearningSite.Web.Pages
 
         public async Task OnGetSeedDb()
         {
+            siteSettings.AvailabilityTimeZoneId = "Europe/London";
+            await siteSettings.Save();
+            await siteSettings.Load();
+
             var appUsers = new List<AppUser>
             {
                 new AppUser {

@@ -30,6 +30,7 @@ builder.Services.AddAuthentication(options =>
     }
 );
 
+builder.Services.AddSingleton<SiteSettings>();
 builder.Services.AddSingleton<TimeZoneProvider>();
 
 var app = builder.Build();
