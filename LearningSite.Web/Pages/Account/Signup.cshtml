@@ -48,13 +48,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
 <script type="text/javascript">
-    var map = @Html.Raw(Json.Serialize(Model.TimeZoneMap));
     var ianaTz = moment.tz.guess();
     if (ianaTz) {
-      var inputTz = map[ianaTz];
-      if (inputTz) {
-        document.querySelector("#time-zone-id").value = inputTz;
-      }
+        document.querySelector("#time-zone-id").value = ianaTz;
     }
 </script>
     }

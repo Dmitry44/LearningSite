@@ -22,11 +22,6 @@ namespace LearningSite.Web.Pages.Account
 
         public SelectListItem[] TimeZoneList { get => timeZoneProvider.GetTimeZoneList(Vm.TimeZoneId); }
 
-        public Dictionary<string, string> TimeZoneMap
-        {
-            get => timeZoneProvider.TimeZones.ToDictionary(x => x.IanaId, x => x.SystemId);
-        }
-
         public IActionResult OnGet()
         {
 

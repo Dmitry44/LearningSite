@@ -21,7 +21,7 @@ namespace LearningSite.Test.Server.Handlers.Auth
                 Id = 1,
                 Name = "User",
                 EmailAddress = "u@u.u",
-                TimeZoneId = "Russian Standard Time"
+                TimeZoneId = "Europe/Moscow"
             };
 
             //act
@@ -45,7 +45,7 @@ namespace LearningSite.Test.Server.Handlers.Auth
 
             var localityClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.Locality);
             Assert.NotNull(localityClaim);
-            Assert.Equal("Russian Standard Time", localityClaim?.Value);
+            Assert.Equal("Europe/Moscow", localityClaim?.Value);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace LearningSite.Test.Server.Handlers.Auth
                 Name = "Admin",
                 EmailAddress = "a@a.a",
                 IsAdmin = true,
-                TimeZoneId = "Russian Standard Time"
+                TimeZoneId = "Europe/Moscow"
             };
 
             //act
@@ -86,7 +86,7 @@ namespace LearningSite.Test.Server.Handlers.Auth
 
             var localityClaim = claims.FirstOrDefault(x => x.Type == ClaimTypes.Locality);
             Assert.NotNull(localityClaim);
-            Assert.Equal("Russian Standard Time", localityClaim?.Value);
+            Assert.Equal("Europe/Moscow", localityClaim?.Value);
         }
     }
 }

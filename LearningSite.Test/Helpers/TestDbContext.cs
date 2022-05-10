@@ -61,7 +61,7 @@ namespace LearningSite.Test.Helpers
                     PasswordHash = HashHelper.GenerateHash("123", "Salt"),
                     IsAdmin = true,
                     IsActive = true,
-                    TimeZoneId = "Russian Standard Time"
+                    TimeZoneId = "Europe/Moscow"
                 },
                 new AppUser {
                     Name = "User",
@@ -70,7 +70,7 @@ namespace LearningSite.Test.Helpers
                     PasswordHash = HashHelper.GenerateHash("234", "Salt"),
                     IsAdmin = false,
                     IsActive = true,
-                    TimeZoneId = "Eastern Standard Time"
+                    TimeZoneId = "America/New_York"
                 },
                 new AppUser {
                     Name = "Inactive",

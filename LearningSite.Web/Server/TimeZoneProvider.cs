@@ -9,16 +9,16 @@ namespace LearningSite.Web.Server
         public SelectListItem[] GetTimeZoneList(string selectedValue)
         {
             return TimeZones
-                    .Select(tz => new SelectListItem(tz.SystemName, tz.SystemId, tz.SystemId == selectedValue))
+                    .Select(tz => new SelectListItem(tz.SystemName, tz.IanaId, tz.IanaId == selectedValue))
                     .ToArray();
         }
 
         public TimeZoneProvider()
         {
-            System.Collections.ObjectModel.ReadOnlyCollection<TimeZoneInfo> tzCollection = TimeZoneInfo.GetSystemTimeZones();
+            var tzCollection = TimeZoneInfo.GetSystemTimeZones();
             foreach (var tzi in tzCollection)
             {
-                var row = new Info() { SystemId = tzi.Id, SystemName = tzi.DisplayName };
+                var row = new Info() { SystemName = tzi.DisplayName };
 
                 if (tzi.HasIanaId)
                 {
@@ -37,7 +37,6 @@ namespace LearningSite.Web.Server
 
         public class Info
         {
-            public string SystemId { get; set; } = "";
             public string SystemName { get; set; } = "";
             public string IanaId { get; set; } = "";
         }

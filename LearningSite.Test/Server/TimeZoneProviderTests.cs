@@ -8,11 +8,11 @@ namespace LearningSite.Test.Server
     public class TimeZoneProviderTests
     {
         [Theory]
-        [InlineData("Russian Standard Time", "Europe/Moscow")]
-        [InlineData("W. Europe Standard Time", "Europe/Berlin")]
-        [InlineData("Eastern Standard Time", "America/New_York")]
-        [InlineData("Tokyo Standard Time", "Asia/Tokyo")]
-        public void TimeZoneProviderTests_ShouldContainTimeZone(string systemId, string ianaId)
+        [InlineData("Europe/Moscow")]
+        [InlineData("Europe/Berlin")]
+        [InlineData("America/New_York")]
+        [InlineData("Asia/Tokyo")]
+        public void TimeZoneProviderTests_ShouldContainTimeZone(string ianaId)
         {
             //arrange
             var sut = new TimeZoneProvider();
@@ -22,7 +22,6 @@ namespace LearningSite.Test.Server
             //assert
             Assert.NotNull(sut.TimeZones);
             var predicate = PredicateBuilder.True<TimeZoneProvider.Info>()
-                .And<TimeZoneProvider.Info>(x => x.SystemId == systemId)
                 .And<TimeZoneProvider.Info>(x => x.IanaId == ianaId);
             Assert.Contains(sut.TimeZones, predicate.Compile().Invoke);
         }
