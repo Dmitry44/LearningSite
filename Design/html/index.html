@@ -1,28 +1,34 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="scss/bootstrap.css" />
+    <link rel="stylesheet" href="scss/main.css" />
 </head>
 
-<body style="background-color: #fff;">
+<body>
+
+    <div class="white-bg"></div>
 
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container-lg flex-lg-row-reverse my-2 my-lg-0">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container-lg my-2 my-lg-0">
+            <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="btn">
-                <button class="btn btn-primary" type="button">Book Now</button>
+            <a class="navbar-brand order-2 order-lg-1" href="index.html">Nicolas Luna</a>
+            <div class="btn order-3 order-lg-3">
+                <button class="btn btn-primary" type="button" onclick="window.location='#booking'">Book Now</button>
             </div>
-            <div class="collapse navbar-collapse px-2" id="navbarSupportedContent">
+            <div class="collapse order-4 order-lg-2 navbar-collapse px-2" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="articles/index.html">Articles</a>
@@ -31,7 +37,7 @@
                         <a class="nav-link" href="lessons.html">Lessons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="schedule.html">Schedule<span class="badge badge-pill badge-dark ml-1 px-2 py-1">3</span></a>
+                        <a class="nav-link" href="schedule.html">Schedule<span class="badge">3</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="settings.html">Settings</a>
@@ -45,12 +51,15 @@
         </div>
     </nav>
 
-    <section class="container-md home-page">
+    <section class="container-md home-page mb-4">
 
         <div class="row">
             <div class="col-xl-8 col-lg-8">
-                <div class="embed-responsive embed-responsive-16by9 video-mp">
-                    <video class="" src="images/video.mp4" poster="images/cover.png" controls="" controlslist="nofullscreen nodownload noplaybackrate"></video>
+                <div class="ratio ratio-16x9 video-mp rounded">
+                    <iframe width="100%" height="auto" src="https://www.youtube.com/embed/iMO4VpgAFGQ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
                 </div>
                 <div class="tag-list">
                     <div class="tag">IELTS examiner</div>
@@ -76,22 +85,22 @@
                 <div class="msection">
                     <p class="h4 hsl">My teaching material</p>
                     <div class="material-parent d-flex flex-row flex-wrap">
-                        <div class="material"><i class="i-svg size-32 file"></i><span>Documents</span></div>
-                        <div class="material"><i class="i-svg size-32 news"></i><span>Articles and news</span></div>
-                        <div class="material"><i class="i-svg size-32 pdf"></i><span>PDF file</span></div>
-                        <div class="material"><i class="i-svg size-32 pres"></i><span>Presentation slides/PPT</span>
+                        <div class="material"><i class="icon s32 file"></i><span>Documents</span></div>
+                        <div class="material"><i class="icon s32 news"></i><span>Articles and news</span></div>
+                        <div class="material"><i class="icon s32 pdf"></i><span>PDF file</span></div>
+                        <div class="material"><i class="icon s32 pres"></i><span>Presentation slides/PPT</span>
                         </div>
-                        <div class="material"><i class="i-svg size-32 audio"></i><span>Audio files</span></div>
-                        <div class="material"><i class="i-svg size-32 check"></i><span>Quizzes</span></div>
-                        <div class="material"><i class="i-svg size-32 image"></i><span>Image files</span></div>
-                        <div class="material"><i class="i-svg size-32 video"></i><span>Video files</span></div>
-                        <div class="material"><i class="i-svg size-32 tach"></i><span>Test templates and examples</span>
+                        <div class="material"><i class="icon s32 audio"></i><span>Audio files</span></div>
+                        <div class="material"><i class="icon s32 check"></i><span>Quizzes</span></div>
+                        <div class="material"><i class="icon s32 image"></i><span>Image files</span></div>
+                        <div class="material"><i class="icon s32 video"></i><span>Video files</span></div>
+                        <div class="material"><i class="icon s32 tach"></i><span>Test templates and examples</span>
                         </div>
-                        <div class="material"><i class="i-svg size-32 class"></i><span>Homework Assignments</span></div>
+                        <div class="material"><i class="icon s32 class"></i><span>Homework Assignments</span></div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 ml-lg-auto">
+            <div class="col-xl-4 col-lg-4 ms-lg-auto">
                 <p class="h4 mx-minus hsm">Work Experience</p>
                 <div class="timeline d-md-flex flex-md-row flex-md-wrap  d-flex flex-row flex-wrap">
                     <div class="txt">
@@ -137,7 +146,8 @@
                 </div>
 
                 <div class="certificate">
-                    <div class="title d-flex flex-xl-row flex-lg-column flex-sm-row"><i class="i-svg size-40 white certificate"></i><span>Certificate
+                    <div class="title d-flex flex-xl-row flex-lg-column flex-sm-row"><i
+                            class="icon s40 white certificate"></i><span>Certificate
                             TESOL/TESL
                             Oxford
                             Seminars 2007</span></div>
@@ -146,25 +156,27 @@
                 </div>
             </div>
 
-    </div></section>
+    </section>
 
-    <section class="container">
+    <section class="container section-margin">
 
         <div class="section-title d-flex flex-row justify-content-between">
             <p class="h4">Reviews</p>
             <div class="carousel-arrows">
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <a class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="visually-hidden">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <a class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="visually-hidden">Next</span>
                 </a>
             </div>
         </div>
 
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="review">
@@ -179,7 +191,7 @@
                                     <p class="name">Dmitry</p>
                                     <p class="date">Dec 13, 2020</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                         <div class="review-item">
@@ -193,7 +205,7 @@
                                     <p class="name">simone</p>
                                     <p class="date">Jul 26, 2021</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                         <div class="review-item">
@@ -207,7 +219,7 @@
                                     <p class="name">David</p>
                                     <p class="date">Dec 18, 2021</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                     </div>
@@ -225,7 +237,7 @@
                                     <p class="name">Dmitry</p>
                                     <p class="date">Dec 13, 2020</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                         <div class="review-item">
@@ -239,7 +251,7 @@
                                     <p class="name">simone</p>
                                     <p class="date">Jul 26, 2021</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                         <div class="review-item">
@@ -253,7 +265,7 @@
                                     <p class="name">David</p>
                                     <p class="date">Dec 18, 2021</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                     </div>
@@ -271,7 +283,7 @@
                                     <p class="name">Dmitry</p>
                                     <p class="date">Dec 13, 2020</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                         <div class="review-item">
@@ -285,7 +297,7 @@
                                     <p class="name">simone</p>
                                     <p class="date">Jul 26, 2021</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                         <div class="review-item">
@@ -299,7 +311,7 @@
                                     <p class="name">David</p>
                                     <p class="date">Dec 18, 2021</p>
                                 </div>
-                                <div class="right"><i class="i-svg user"></i></div>
+                                <div class="right"><i class="icon user"></i></div>
                             </div>
                         </div>
                     </div>
@@ -309,22 +321,22 @@
 
     </section>
 
-    <section class="container section-margin mb-5">
+    <section class="container mb-5" id="booking">
 
         <p class="h4 mb-4">Book lesson</p>
 
-        <div class="row">
-            <div class="col-lg-4 col-sm-12 mb-5">
+        <div class="row justify-content-between">
+            <div class="col-lg-5 col-12 mb-5">
 
                 <form action="" class="px-sm-0 px-5">
 
                     <p class="form-label">Choose language</p>
                     <div class="form-row">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="language" id="eng" value="eng" checked="">
+                            <input class="form-check-input" type="radio" name="language" id="eng" value="eng" checked>
                             <label class="form-check-label" for="eng">
                                 English
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
 
@@ -332,7 +344,15 @@
                             <input class="form-check-input" type="radio" name="language" id="spa" value="spa">
                             <label class="form-check-label" for="spa">
                                 Spanish
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="language" id="dr" value="dr">
+                            <label class="form-check-label" for="dr">
+                                Drawing
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
                     </div>
@@ -343,15 +363,15 @@
                             <input class="form-check-input" type="radio" name="time" id="30" value="30">
                             <label class="form-check-label" for="30">
                                 30 min
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="time" id="45" value="45" checked="">
+                            <input class="form-check-input" type="radio" name="time" id="45" value="45" checked>
                             <label class="form-check-label" for="45">
                                 45 min
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
 
@@ -359,7 +379,7 @@
                             <input class="form-check-input" type="radio" name="time" id="60" value="60">
                             <label class="form-check-label" for="60">
                                 60 min
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
                     </div>
@@ -367,10 +387,10 @@
                     <p class="form-label">Choose quantity</p>
                     <div class="form-row">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="quantity" id="1" value="1" checked="">
+                            <input class="form-check-input" type="radio" name="quantity" id="1" value="1" checked>
                             <label class="form-check-label" for="1">
                                 1
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
 
@@ -378,7 +398,7 @@
                             <input class="form-check-input" type="radio" name="quantity" id="5" value="5">
                             <label class="form-check-label" for="5">
                                 5
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
 
@@ -386,7 +406,7 @@
                             <input class="form-check-input" type="radio" name="quantity" id="10" value="10">
                             <label class="form-check-label" for="10">
                                 10
-                                <i class="i-svg size-24 checkbox"></i>
+                                <i class="icon s24 checkbox"></i>
                             </label>
                         </div>
 
@@ -400,7 +420,7 @@
                 </form>
 
             </div>
-            <div class="col-lg-7 col-sm-12 ml-auto">
+            <div class="col-lg-6 col-12 ms-auto">
                 <div class="check-block">
                     <div class="list">
                         <div class="list-item">
@@ -441,10 +461,13 @@
         </div>
     </section>
 
-    <script src="../../npm/jquery%403.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="../../npm/bootstrap%404.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-    </script>
+    <footer class="footer">
+        <div class="container">
+            <div>© 2022, Nicolas Luna</div>
+        </div>
+    </footer>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 </body>
 

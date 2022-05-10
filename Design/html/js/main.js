@@ -7,7 +7,7 @@ document.querySelectorAll('.cell').forEach(item => {
         if (item.className == "cell" && parseInt(badge.innerText) > 0) {
             item.className += " selected";
             badge.innerText = parseInt(badge.innerText) - 1;
-            fn_time.innerHTML += '<div class="time"><span>Tue, 5 April • 07:30 - 08:30</span><i class="fa-solid fa-xmark ml-2"></i> </div>';
+            fn_time.innerHTML += '<div class="time"><span>Tue, 5 April • 07:30 - 08:30<span aria-hidden="true" class="fs-20 ms-1">&times;</span></span></div>';
         }
     })
 })

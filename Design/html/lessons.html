@@ -1,28 +1,33 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lessons</title>
-    <link rel="stylesheet" href="scss/main.css">
+    <link rel="stylesheet" href="scss/bootstrap.css" />
+    <link rel="stylesheet" href="scss/main.css" />
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container-lg flex-lg-row-reverse my-2 my-lg-0">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="container-lg my-2 my-lg-0">
+            <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="btn">
-                <button class="btn btn-primary" type="button">Book Now</button>
+            <a class="navbar-brand order-2 order-lg-1" href="index.html">Nicolas Luna</a>
+            <div class="btn order-3 order-lg-3">
+                <button class="btn btn-primary" type="button" onclick="window.location='index.html#booking'">Book
+                    Now</button>
             </div>
-            <div class="collapse navbar-collapse px-2" id="navbarSupportedContent">
+            <div class="collapse order-4 order-lg-2 navbar-collapse px-2" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.html">Home </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="articles/index.html">Articles</a>
@@ -31,7 +36,7 @@
                         <a class="nav-link" href="lessons.html">Lessons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="schedule.html">Schedule<span class="badge badge-pill badge-dark ml-1 px-2 py-1">3</span></a>
+                        <a class="nav-link" href="schedule.html">Schedule<span class="badge">3</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="settings.html">Settings</a>
@@ -124,10 +129,11 @@
                                     <p class="text">Fluent English Lesson</p>
                                 </td>
                                 <td class="pt-2 pl-2">
-                                    <p class="text"><i class="bi bi-circle"></i>&nbsp;Booked</p>
+                                    <p class="text"><i class="icon s20 circle"></i>Booked</p>
                                 </td>
                                 <td class="pt-2 pr-2 text-right">
-                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true" class="fs-20 ml-1">&times;</span></a></p>
+                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true"
+                                                class="fs-20 ms-1">&times;</span></a></p>
                                 </td>
                             </tr>
                             <tr class="one-lesson">
@@ -139,10 +145,11 @@
                                     <p class="text">Fluent English Lesson</p>
                                 </td>
                                 <td class="pt-2 pl-2">
-                                    <p class="text"><i class="bi bi-check-circle"></i>&nbsp;Confirmed</p>
+                                    <p class="text"><i class="icon s20 circle-check"></i>Confirmed</p>
                                 </td>
                                 <td class="pt-2 pr-2 text-right">
-                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true" class="fs-20 ml-1">&times;</span></a></p>
+                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true"
+                                                class="fs-20 ms-1">&times;</span></a></p>
                                 </td>
                             </tr>
                             <tr class="one-lesson muted-row">
@@ -159,10 +166,11 @@
                                     <p class="text">Fluent English Lesson</p>
                                 </td>
                                 <td class="pt-2 pl-2">
-                                    <p class="text"><i class="bi bi-x-circle"></i>&nbsp;Canceled</p>
+                                    <p class="text"><i class="icon s20 circle-x"></i>Canceled</p>
                                 </td>
                                 <td class="pt-2 pr-2 text-right">
-                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true" class="fs-20 ml-1">&times;</span></a></p>
+                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true"
+                                                class="fs-20 ms-1">&times;</span></a></p>
                                 </td>
                             </tr>
                             <tr class="one-lesson">
@@ -179,10 +187,11 @@
                                     <p class="text">Fluent English Lesson</p>
                                 </td>
                                 <td class="pt-2 pl-2">
-                                    <p class="text"><i class="bi bi-check-circle"></i>&nbsp;Confirmed</p>
+                                    <p class="text"><i class="icon s20 circle-check"></i>Confirmed</p>
                                 </td>
                                 <td class="pt-2 pr-2 text-right">
-                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true" class="fs-20 ml-1">&times;</span></a></p>
+                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true"
+                                                class="fs-20 ms-1">&times;</span></a></p>
                                 </td>
                             </tr>
                             <tr class="one-lesson">
@@ -199,10 +208,11 @@
                                     <p class="text">Fluent English Lesson</p>
                                 </td>
                                 <td class="pt-2 pl-2">
-                                    <p class="text"><i class="bi bi-check-circle"></i>&nbsp;Confirmed</p>
+                                    <p class="text"><i class="icon s20 circle-check"></i>Confirmed</p>
                                 </td>
                                 <td class="pt-2 pr-2 text-right">
-                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true" class="fs-20 ml-1">&times;</span></a></p>
+                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true"
+                                                class="fs-20 ms-1">&times;</span></a></p>
                                 </td>
                             </tr>
                             <tr class="one-lesson">
@@ -214,10 +224,11 @@
                                     <p class="text">Fluent English Lesson</p>
                                 </td>
                                 <td class="pt-2 pl-2">
-                                    <p class="text"><i class="bi bi-check-circle"></i>&nbsp;Confirmed</p>
+                                    <p class="text"><i class="icon s20 circle-check"></i>Confirmed</p>
                                 </td>
                                 <td class="pt-2 pr-2 text-right">
-                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true" class="fs-20 ml-1">&times;</span></a></p>
+                                    <p class="text"><a href="#" class="card-link">Cancel<span aria-hidden="true"
+                                                class="fs-20 ms-1">&times;</span></a></p>
                                 </td>
                             </tr>
                         </table>
@@ -234,7 +245,7 @@
                                 <option>Feb</option>
                                 <option>Mar</option>
                                 <option>Apr</option>
-                                <option selected="">May</option>
+                                <option selected>May</option>
                                 <option>Jun</option>
                                 <option>Jul</option>
                                 <option>Aug</option>
@@ -248,7 +259,7 @@
                                 <option>2017</option>
                                 <option>2018</option>
                                 <option>2019</option>
-                                <option selected="">2020</option>
+                                <option selected>2020</option>
                             </select>
                         </div>
 
@@ -307,21 +318,19 @@
                         </div>
 
                         <div class="calendar__buttons">
-                            <button class="calendar__button calendar__button--primary" onclick="location.href='lessons-calendar.html';">Show lessons as calendar</button>
+                            <button class="calendar__button calendar__button--primary"
+                                onclick="location.href='lessons-calendar.html';">Show lessons as calendar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
+        </div>
+        </div>
     </section>
 
 
-    <script src="../../npm/jquery%403.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="../../npm/bootstrap%404.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
-    </script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
 </body>
 
