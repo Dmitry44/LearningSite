@@ -9,6 +9,7 @@ namespace LearningSite.Web.Server.Entities
         public virtual DbSet<Availability> Availabilities => Set<Availability>();
         public virtual DbSet<AvailabilityDef> AvailabilityDefs => Set<AvailabilityDef>();
         public virtual DbSet<Booking> Bookings => Set<Booking>();
+        public virtual DbSet<CustomDay> CustomDays => Set<CustomDay>();
         public virtual DbSet<Lesson> Lessons => Set<Lesson>();
         public virtual DbSet<Package> Packages => Set<Package>();
         public virtual DbSet<Purchase> Purchases => Set<Purchase>();

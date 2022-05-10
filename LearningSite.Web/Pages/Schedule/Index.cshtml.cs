@@ -1,4 +1,5 @@
 using LearningSite.Web.Server;
+using LearningSite.Web.Server.Handlers;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,15 +8,16 @@ namespace LearningSite.Web.Pages.Schedule
 {
     public class IndexModel : AppPageModel
     {
-        private readonly IMediator mediator;
 
         public IndexModel(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet()
         {
+            var vv = await mediator.Send(new GetSchedule.Request(UserId, TimeZoneId));
+
+            return Page();
         }
     }
 }

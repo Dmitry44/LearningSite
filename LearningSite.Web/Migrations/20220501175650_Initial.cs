@@ -53,8 +53,7 @@ namespace LearningSite.Web.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Start = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    End = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    IsDef = table.Column<bool>(type: "INTEGER", nullable: false)
+                    End = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -67,12 +66,24 @@ namespace LearningSite.Web.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Start = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    End = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    DayOfWeek = table.Column<int>(type: "INTEGER", nullable: false),
+                    Start = table.Column<TimeOnly>(type: "TEXT", nullable: false),
+                    End = table.Column<TimeOnly>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AvailabilityDefs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CustomDays",
+                columns: table => new
+                {
+                    Day = table.Column<DateOnly>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustomDays", x => x.Day);
                 });
 
             migrationBuilder.CreateTable(
@@ -167,6 +178,8 @@ namespace LearningSite.Web.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Start = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    End = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false),
                     PurchaseId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -238,6 +251,9 @@ namespace LearningSite.Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "Bookings");
+
+            migrationBuilder.DropTable(
+                name: "CustomDays");
 
             migrationBuilder.DropTable(
                 name: "Settings");

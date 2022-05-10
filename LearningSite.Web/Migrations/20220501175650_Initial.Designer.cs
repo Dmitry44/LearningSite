@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LearningSite.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220421194819_Initial")]
+    [Migration("20220501175650_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,9 +100,6 @@ namespace LearningSite.Web.Migrations
                     b.Property<DateTime>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsDef")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("Start")
                         .HasColumnType("TEXT");
 
@@ -117,10 +114,13 @@ namespace LearningSite.Web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("End")
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<TimeOnly>("End")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Start")
+                    b.Property<TimeOnly>("Start")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -137,8 +137,14 @@ namespace LearningSite.Web.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("End")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("PurchaseId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
@@ -150,6 +156,16 @@ namespace LearningSite.Web.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("LearningSite.Web.Server.Entities.CustomDay", b =>
+                {
+                    b.Property<DateOnly>("Day")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Day");
+
+                    b.ToTable("CustomDays");
                 });
 
             modelBuilder.Entity("LearningSite.Web.Server.Entities.Lesson", b =>

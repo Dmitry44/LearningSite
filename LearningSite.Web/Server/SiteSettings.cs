@@ -7,6 +7,7 @@ namespace LearningSite.Web.Server
     public class SiteSettingsProps
     {
         public string AvailabilityTimeZoneId { get; set; } = "";
+        public int StopBookingLessThanHours { get; set; } = 12;
     }
 
     public class SiteSettings : SiteSettingsProps

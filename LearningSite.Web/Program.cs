@@ -13,6 +13,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlite("Data Source=Database/learning-site.db");
+    options.EnableSensitiveDataLogging();
 });
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -49,6 +50,7 @@ using (var scope = app.Services.CreateScope())
     var dataContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     dataContext.Database.Migrate();
 }
+
 
 //app.UseHttpsRedirection();
 app.UseStaticFiles();
