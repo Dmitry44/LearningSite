@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings – Aviability</title>
+    <link rel="stylesheet" href="scss/bootstrap.css" />
+    <link rel="stylesheet" href="scss/main.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-lg my-2 my-lg-0">
+            <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand order-2 order-lg-1" href="index.html">Nicolas Luna</a>
+            <div class="btn order-3 order-lg-3">
+                <button class="btn btn-primary" type="button" onclick="window.location='index.html#booking'">Book
+                    Now</button>
+            </div>
+            <div class="collapse order-4 order-lg-2 navbar-collapse px-2" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articles/index.html">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lessons.html">Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule<span class="badge">3</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="settings.html">Settings</a>
+                    </li>
+                    <li class="nav-item form-inline">
+                        <a class="nav-link" href="account.html">John S.</a>
+                        <button class="btn-round" type="button" onclick="location.href='signin.html';">Log out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container-lg main-content">
+        <p class="h2">Settings</p>
+
+        <div class="setting-navigation">
+            <ul class="nav nav-tabs d-none d-md-flex">
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.html">General</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="settings-aviability.html" aria-current="page">Aviability</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings-users.html">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings-purchases.html">Purchases</a>
+                </li>
+            </ul>
+
+            <div class="form-group d-block d-md-none">
+                <select id="inputState" class="form-control p-3">
+                    <option value="General">General</option>
+                    <option value="Aviability" selected>Aviability</option>
+                    <option value="Users">Users</option>
+                    <option value="Purchases">Purchases</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="base-block setting-page">
+
+            <form class="grid-calendar-sel">
+                <div class="calendar__opts">
+                    <select name="calendar__month" id="calendar__month">
+                        <option>January</option>
+                        <option>February</option>
+                        <option>March</option>
+                        <option selected>April</option>
+                        <option>May</option>
+                        <option>June</option>
+                        <option>July</option>
+                        <option>August</option>
+                        <option>September</option>
+                        <option>October</option>
+                        <option>November</option>
+                        <option>December</option>
+                    </select>
+
+                    <select name="calendar__year" id="calendar__year">
+                        <option>2019</option>
+                        <option>2020</option>
+                        <option>2021</option>
+                        <option selected>2022</option>
+                    </select>
+                </div>
+
+                <div class="calendar__buttons">
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalCenter">
+                        Edit default avilable time
+                    </button>
+                </div>
+            </form>
+
+            <div class="fp-grid">
+                <div class="fp-week">
+                    <p>Monday</p>
+                </div>
+                <div class="fp-week">
+                    <p>Tuesday</p>
+                </div>
+                <div class="fp-week">
+                    <p>Wednesday</p>
+                </div>
+                <div class="fp-week">
+                    <p>Thursday</p>
+                </div>
+                <div class="fp-week">
+                    <p>Friday</p>
+                </div>
+                <div class="fp-week">
+                    <p>Saturday</p>
+                </div>
+                <div class="fp-week">
+                    <p>Sunday</p>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">26</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">27</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>15:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">28</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">29</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">30</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">31</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">1</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">2</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day today">
+                    <div class="header">
+                        <div class="num">3</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>15:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">4</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">5</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">6</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">7</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">8</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">9</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">10</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>15:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">11</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day changed">
+                    <div class="header">
+                        <div class="num">12</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>10:00AM</div>
+                    </div>
+                </div>
+                <div class="fp-day changed">
+                    <div class="header">
+                        <div class="num">13</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>10:00AM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">14</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">15</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">16</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">17</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>15:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">18</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">19</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">20</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">21</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">22</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">23</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">24</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>15:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">25</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">26</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">27</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">28</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">29</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day">
+                    <div class="header">
+                        <div class="num">30</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">1</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>15:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">2</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">3</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">4</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                        <div>8:00AM<span class="divider"></span>12:00AM</div>
+                        <div>2:00PM<span class="divider"></span>6:00PM</div>
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">5</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+                <div class="fp-day disabled">
+                    <div class="header">
+                        <div class="num">6</div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                            <div class="edit-button"><i class="icon s16 edit"></i>Edit</div>
+                        </a>
+                    </div>
+                    <div class="sch-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="weekdays d-none d-md-grid">
+                        <button class="day mr-3 active">Mon<i class="icon s20 circle-check-white"></i></button>
+                        <button class="day mr-3">Tue<i class="icon s20 circle-check"></i></button>
+                        <button class="day mr-3">Wed<i class="icon s20 circle-check"></i></button>
+                        <button class="day mr-3">Thu<i class="icon s20 circle-check"></i></button>
+                        <button class="day mr-3">Fri<i class="icon s20 circle-check"></i></button>
+                        <button class="day mr-3">Sat<i class="icon s20 circle"></i></button>
+                        <button class="day">Sun<i class="icon s20 circle"></i></button>
+                    </div>
+                    <div class="form-group d-block d-md-none mb-0">
+                        <select id="inputState" class="form-control p-2">
+                            <option value="Monday" selected>Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                    </div>
+
+                    <div class="one-slot">
+
+                        <div class="start-date">
+                            <input type="text" class="time form-control" value="8:00"><select class="">
+                                <option selected>AM</option>
+                                <option>PM</option>
+                            </select>
+                        </div>
+
+                        <span class="divider"></span>
+
+                        <div class="end-date">
+                            <input type="text" class="time form-control" value="12:00"><select class="">
+                                <option selected>AM</option>
+                                <option>PM</option>
+                            </select>
+                            <button type="button" class="btn-secondary ms-2"><i class="icon s20 bin"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="one-slot">
+
+                        <div class="start-date">
+                            <input type="text" class="time form-control" value="2:00"><select class="">
+                                <option>AM</option>
+                                <option selected>PM</option>
+                            </select>
+                        </div>
+
+                        <span class="divider"></span>
+
+                        <div class="end-date">
+                            <input type="text" class="time form-control" value="6:00"><select class="">
+                                <option>AM</option>
+                                <option selected>PM</option>
+                            </select>
+                            <button type="button" class="btn-secondary ms-2"><i class="icon s20 bin"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div class="main-buttons">
+                        <button type="button" class=" btn-primary">Save changes</button>
+                        <button type="button" class="btn-secondary ms-2" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    <button type="button" class="btn-secondary">
+                        <i class="fa-solid fa-plus"></i>
+                        Add new
+                        time slot
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>

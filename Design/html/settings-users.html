@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings – Users</title>
+    <link rel="stylesheet" href="scss/bootstrap.css" />
+    <link rel="stylesheet" href="scss/main.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container-lg my-2 my-lg-0">
+            <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand order-2 order-lg-1" href="index.html">Nicolas Luna</a>
+            <div class="btn order-3 order-lg-3">
+                <button class="btn btn-primary" type="button" onclick="window.location='index.html#booking'">Book
+                    Now</button>
+            </div>
+            <div class="collapse order-4 order-lg-2 navbar-collapse px-2" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="articles/index.html">Articles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="lessons.html">Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule<span class="badge">3</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="settings.html">Settings</a>
+                    </li>
+                    <li class="nav-item form-inline">
+                        <a class="nav-link" href="account.html">John S.</a>
+                        <button class="btn-round" type="button" onclick="location.href='signin.html';">Log out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container-lg main-content">
+        <p class="h2">Settings</p>
+
+        <div class="setting-navigation">
+            <ul class="nav nav-tabs d-none d-md-flex">
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.html">General</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings-aviability.html">Aviability</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="settings-users.html" aria-current="page">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="settings-purchases.html">Purchases</a>
+                </li>
+            </ul>
+
+            <div class="form-group d-block d-md-none mb-0">
+                <select id="inputState" class="form-control p-3">
+                    <option value="General">General</option>
+                    <option value="Aviability">Aviability</option>
+                    <option value="Users" selected>Users</option>
+                    <option value="Purchases">Purchases</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="base-block adaptive setting-page">
+
+            <div class="setting-buttons">
+
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">Search</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter search query">
+                </div>
+
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">Sort</label>
+                    <select class="form-control">
+                        <option>Relevance</option>
+                        <option>Popularity</option>
+                        <option>Date</option>
+                        <option selected>Amount</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-4">
+                    <label for="exampleInputEmail1" class="form-label">Filter</label>
+                    <select class="form-control">
+                        <option selected>First option</option>
+                        <option>Second option</option>
+                        <option>Third option</option>
+                        <option>Fourth option</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="setting-table header">
+
+                <div class="setting-row">
+                    <div class="setting-cell name">Name</div>
+                    <div class="setting-cell email">Email</div>
+                    <div class="setting-cell status-switch">Status</div>
+                    <div class="setting-cell lessons">Lessons</div>
+                    <div class="setting-cell last-lesson">Last lesson</div>
+                    <div class="setting-cell notes">Notes</div>
+                </div>
+
+            </div>
+
+            <div class="setting-table">
+
+                <div class="setting-row">
+                    <div class="setting-cell name">Theresa Webb</div>
+                    <div class="setting-cell email">nvt.isst.nute@gmail.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-1" checked>
+                            <label class="form-check-label" for="switch-1">Active</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">4</div>
+                    <div class="setting-cell last-lesson">May 31, 2015</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable>Nulla Lorem mollit cupidatat
+                                irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt
+                                aliquip deserunt reprehenderit elit laborum.</span></p>
+                    </div>
+                </div>
+
+                <div class="setting-row unactive">
+                    <div class="setting-cell name">Miles, Esther</div>
+                    <div class="setting-cell email">nathan.roberts@example.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-2">
+                            <label class="form-check-label" for="switch-2">Unactive</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">7</div>
+                    <div class="setting-cell last-lesson">February 29, 2012</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable>Nulla Lorem mollit cupidatat
+                                irure. Laborum magna nulla duis ullamco cillum dolor.</span></p>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-cell name">Nguyen, Shane</div>
+                    <div class="setting-cell email">willie.jennings@example.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-3" checked>
+                            <label class="form-check-label" for="switch-3">Active</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">12</div>
+                    <div class="setting-cell last-lesson">October 24, 2018</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable>Nulla Lorem mollit cupidatat
+                                irure. Laborum magna nulla duis ullamco cillum dolor.</span></p>
+                    </div>
+                </div>
+
+                <div class="setting-row unactive">
+                    <div class="setting-cell name">Flores, Juanita</div>
+                    <div class="setting-cell email">michelle.rivera@example.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-4">
+                            <label class="form-check-label" for="switch-4">Unactive</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">1</div>
+                    <div class="setting-cell last-lesson">September 9, 2013</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                    </div>
+                </div>
+
+                <div class="setting-row unactive">
+                    <div class="setting-cell name">Henry, Arthur</div>
+                    <div class="setting-cell email">jackson.graham@example.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-5">
+                            <label class="form-check-label" for="switch-5">Unactive</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">34</div>
+                    <div class="setting-cell last-lesson">April 28, 2016</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-cell name">Cooper, Kristin</div>
+                    <div class="setting-cell email">deanna.curtis@example.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-6" checked>
+                            <label class="form-check-label" for="switch-6">Active</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">8</div>
+                    <div class="setting-cell last-lesson">March 13, 2014</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable></span></p>
+                    </div>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-cell name">Black, Marvin</div>
+                    <div class="setting-cell email">bill.sanders@example.com</div>
+                    <div class="setting-cell status-switch">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="switch-7" checked>
+                            <label class="form-check-label" for="switch-7">Active</label>
+                        </div>
+                    </div>
+                    <div class="setting-cell lessons">2</div>
+                    <div class="setting-cell last-lesson">December 29, 2012</div>
+                    <div class="setting-cell notes textarea-td">
+                        <p class="text"><span class="notes" role="textbox" contenteditable>Nulla Lorem mollit cupidatat
+                                irure. Laborum magna nulla duis ullamco cillum dolor.</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+</body>
+
+</html>

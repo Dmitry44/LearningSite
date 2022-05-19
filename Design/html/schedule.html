@@ -53,7 +53,7 @@
         <p class="h2">Schedule</p>
         <div class="base-block">
             <div class="grid-calendar-sel">
-                <div class="d-flex flex-row">
+                <div class="week-buttons">
                     <button type="button" class="btn btn-secondary me-3">
                         Previous week
                     </button>
@@ -120,9 +120,11 @@
 
                 <div class="calendar-cells">
                     <div class="calendar-time">
-                        <div class="cell">00:00 – 00:30</div>
-                        <div class="cell">01:00 – 01:30</div>
-                        <div class="cell">02:00 – 02:30</div>
+                        <div class="cell"><span class="time">00:00</span><span class="divider">–</span><span
+                                class="time">00:30</span></div>
+                        <div class="cell"><span class="time">01:00</span><span class="divider">–</span>01:30</div>
+                        <div class="cell"><span class="time">02:00</span><span class="divider">–</span><span
+                                class="time">02:30</span></div>
                     </div>
                     <div class="calendar-week-day">
                         <div class="cell mine-selection"></div>
@@ -147,7 +149,7 @@
                     <div class="calendar-week-day">
                         <div class="cell"></div>
                         <div class="cell unavalible"></div>
-                        <div class="cell selected"></div>
+                        <div class="cell"></div>
                     </div>
                     <div class="calendar-week-day">
                         <div class="cell unavalible"></div>
@@ -165,9 +167,12 @@
 
                 <div class="calendar-cells">
                     <div class="calendar-time">
-                        <div class="cell">18:00 – 18:30</div>
-                        <div class="cell">19:00 – 19:30</div>
-                        <div class="cell">20:00 – 20:30</div>
+                        <div class="cell"><span class="time">18:00</span><span class="divider">–</span><span
+                                class="time">18:30</span></div>
+                        <div class="cell"><span class="time">19:00</span><span class="divider">–</span><span
+                                class="time">19:30</span></div>
+                        <div class="cell"><span class="time">20:00</span><span class="divider">–</span><span
+                                class="time">20:30</span></div>
                     </div>
                     <div class="calendar-week-day">
                         <div class="cell"></div>
@@ -207,12 +212,10 @@
                 </div>
             </div>
 
-            <div class="d-flex flex-row align-items-start justify-content-between mt-4">
-                <div class="final-set-time flex-wrap" id="final-set-time">
-                    <div class="time">
-                        <span>Tue, 5 April • 07:30 - 08:30<span aria-hidden="true"
-                                class="fs-20 ms-1">&times;</span></span>
-                    </div>
+            <div class="d-flex flex-row align-items-start justify-content-between mt-4" id="selectedTimeBlock">
+
+                <div class="final-set-time" id="finalSetTime">
+
                 </div>
 
                 <button type="button" class="btn-primary">
