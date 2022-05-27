@@ -7,25 +7,89 @@
 <section class="container-lg main-content">
     <p class="h2">Schedule</p>
     <div class="base-block">
-        <div class="calendar-body">
+        <div class="grid-calendar-sel">
+            <div class="week-buttons">
+                <button type="button" class="btn btn-secondary me-3">
+                    Previous week
+                </button>
+                <button type="button" class="btn btn-secondary">
+                    Next week
+                </button>
+            </div>
 
+            <div class="lessons-drop-button">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary" id="dropdownToggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Unset lessons<span class="badge" id="badge_qnt">3</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownToggle">
+                        <li>
+                            <h6 class="dropdown-header">5 lessons pack</h6>
+                        </li>
+                        <li><a class="dropdown-item">#18 • Fluent English Lesson • 30 min</a></li>
+                        <li><a class="dropdown-item">#17 • Fluent English Lesson • 30 min</a></li>
+                        <li><a class="dropdown-item">#16 • Fluent English Lesson • 30 min</a></li>
+                        <li>
+                            <a class="dropdown-item disabled" tabindex=" -1" aria-disabled="true">
+                                #15 • Fluent
+                                English Lesson • 30 min
+                            </a>
+                        </li>
+                        <li>
+                            <a class=" dropdown-item disabled" tabindex=" -1" aria-disabled="true">
+                                #14 • Fluent
+                                English Lesson • 30 min
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class=" calendar-body">
             <div class="calendar-title">
                 <div class="cell empty"></div>
-                <div class="cell">Mon, 2 April</div>
-                <div class="cell">Tue, 3 April</div>
-                <div class="cell">Wen, 4 April</div>
-                <div class="cell">Thu, 5 April</div>
-                <div class="cell">Fri, 6 April</div>
-                <div class="cell">Sat, 7 April</div>
-                <div class="cell">Sun, 8 April</div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Mon, 2 April</span>
+                    <span class="d-block d-md-none">02.4</span>
+                </div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Tue, 3 April</span>
+                    <span class="d-block d-md-none">03.4</span>
+                </div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Wen, 4 April</span>
+                    <span class="d-block d-md-none">04.4</span>
+                </div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Thu, 5 April</span>
+                    <span class="d-block d-md-none">05.4</span>
+                </div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Fri, 6 April</span>
+                    <span class="d-block d-md-none">06.4</span>
+                </div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Sat, 7 April</span>
+                    <span class="d-block d-md-none">07.4</span>
+                </div>
+                <div class="cell">
+                    <span class="d-none d-md-block">Sun, 8 April</span>
+                    <span class="d-block d-md-none">08.4</span>
+                </div>
             </div>
 
 
             <div class="calendar-cells">
                 <div class="calendar-time">
-                    <div class="cell">00:00 – 00:30</div>
-                    <div class="cell">01:00 – 01:30</div>
-                    <div class="cell">02:00 – 02:30</div>
+                    <div class="cell">
+                        <span class="time">00:00</span><span class="divider">–</span><span class="time">00:30</span>
+                    </div>
+                    <div class="cell"><span class="time">01:00</span><span class="divider">–</span>01:30</div>
+                    <div class="cell">
+                        <span class="time">02:00</span><span class="divider">–</span><span class="time">02:30</span>
+                    </div>
                 </div>
                 <div class="calendar-week-day">
                     <div class="cell mine-selection"></div>
@@ -50,7 +114,7 @@
                 <div class="calendar-week-day">
                     <div class="cell"></div>
                     <div class="cell unavalible"></div>
-                    <div class="cell selected"></div>
+                    <div class="cell"></div>
                 </div>
                 <div class="calendar-week-day">
                     <div class="cell unavalible"></div>
@@ -64,6 +128,86 @@
                 </div>
             </div>
 
+            <div class="wrap-line"></div>
+
+            <div class="calendar-cells">
+                <div class="calendar-time">
+                    <div class="cell">
+                        <span class="time">18:00</span><span class="divider">–</span><span class="time">18:30</span>
+                    </div>
+                    <div class="cell">
+                        <span class="time">19:00</span><span class="divider">–</span><span class="time">19:30</span>
+                    </div>
+                    <div class="cell">
+                        <span class="time">20:00</span><span class="divider">–</span><span class="time">20:30</span>
+                    </div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell"></div>
+                    <div class="cell unavalible"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell"></div>
+                    <div class="cell unavalible"></div>
+                    <div class="cell unavalible"></div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell unavalible"></div>
+                    <div class="cell"></div>
+                    <div class="cell"></div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell unavalible"></div>
+                    <div class="cell unavalible"></div>
+                    <div class="cell unavalible"></div>
+                </div>
+                <div class="calendar-week-day">
+                    <div class="cell unavalible"></div>
+                    <div class="cell unavalible"></div>
+                    <div class="cell unavalible"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex flex-row align-items-start justify-content-between mt-4" id="selectedTimeBlock">
+
+            <div class="final-set-time" id="finalSetTime">
+            </div>
+
+            <button type="button" class="btn-primary">
+                Finish
+            </button>
+
+        </div>
+
+        <div class="legend">
+            <div class="item">
+                <div class="circle"></div>
+                <span>Availible</span>
+            </div>
+            <div class="item">
+                <div class="circle unavalible"></div>
+                <span>Unavalible</span>
+            </div>
+            <div class="item">
+                <div class="circle booked"></div>
+                <span>Booked by you</span>
+            </div>
+            <div class="item">
+                <div class="circle selected"></div>
+                <span>Selected</span>
+            </div>
         </div>
     </div>
 </section>
