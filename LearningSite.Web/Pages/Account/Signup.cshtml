@@ -6,27 +6,27 @@
 
 <div class="container" style="height: 80vh;">
     <div class="row justify-content-center align-content-center flex-column" style="height: 80vh;">
-        <div class="col-xl-4 col-lg-5 col-md-8 col-9 justify-content-center align-content-center">
+        <div class="col-xl-4 col-lg-5 col-md-8 col-12 justify-content-center align-content-center">
             <div class="base-block p-4">
                 <p class="h2">Sign Up</p>
                 <form method="POST">
                     <div class="form-group">
                         <input type="text" class="form-control" asp-for="Vm.Name" placeholder="Name" />
-                        <span class="text text text-danger" asp-validation-for="Vm.Name"></span>
+                        <span class="login-error-text text-danger" asp-validation-for="Vm.Name"></span>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" asp-for="Vm.EmailAddress" placeholder="Email" />
-                        <span class="text text-danger" asp-validation-for="Vm.EmailAddress"></span>
+                        <span class="login-error-text text-danger" asp-validation-for="Vm.EmailAddress"></span>
                     </div>
                     <div class="form-group">
                         <input class="form-control" asp-for="Vm.Password" placeholder="Password" type="password" />
-                        <span class="text text-danger" asp-validation-for="Vm.Password"></span>
+                        <span class="login-error-text text-danger" asp-validation-for="Vm.Password"></span>
                     </div>
                     <div class="form-group mb-5">
                         <select class="form-control form-select" asp-for="Vm.TimeZoneId" asp-items="Model.TimeZoneList" id="time-zone-id">
                             <option value="">Select Time Zone</option>
                         </select>
-                        <span class="text text-danger" asp-validation-for="Vm.TimeZoneId"></span>
+                        <span class="login-error-text text-danger" asp-validation-for="Vm.TimeZoneId"></span>
                     </div>
                     <div class="d-flex flex-row justify-content-between">
                         <button type="submit" class="btn-primary">
