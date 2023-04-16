@@ -17,7 +17,7 @@ namespace LearningSite.Web.Server.Handlers
                 this.db = db;
             }
 
-            public async Task<Unit> Handle(Request request, CancellationToken cancellationToken)
+            public async Task Handle(Request request, CancellationToken cancellationToken)
             {
                 var user = await db.AppUsers.FirstAsync(x => x.Id == request.User.Id, cancellationToken);
 
@@ -26,8 +26,6 @@ namespace LearningSite.Web.Server.Handlers
                 user.TimeZoneId = request.User.TimeZoneId;
 
                 await db.SaveChangesAsync(cancellationToken);
-
-                return Unit.Value;
             }
 
         }

@@ -31,11 +31,10 @@ namespace LearningSite.Test.Server.Handlers
             };
 
             //act
-            var rez = await sut.Handle(new UpdateUserInfo.Request(userAfter), new System.Threading.CancellationToken());
+            await sut.Handle(new UpdateUserInfo.Request(userAfter), new System.Threading.CancellationToken());
             var rezDb = await db.AppUsers.FirstAsync(x => x.Id == user.Id);
 
             //assert
-            Assert.IsType<MediatR.Unit>(rez);
             Assert.NotNull(rezDb);
             Assert.IsType<AppUser>(rezDb);
             Assert.Equal(rezDb.EmailAddress, userAfter.EmailAddress);

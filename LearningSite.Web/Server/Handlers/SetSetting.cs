@@ -17,7 +17,7 @@ namespace LearningSite.Web.Server.Handlers
                 this.db = db;
             }
 
-            public async Task<Unit> Handle(Request request, CancellationToken cancellationToken)
+            public async Task Handle(Request request, CancellationToken cancellationToken)
             {
                 var setting = await db.Settings.FirstOrDefaultAsync(x => x.Key == request.Key, cancellationToken);
                 if (setting is null)
@@ -30,7 +30,6 @@ namespace LearningSite.Web.Server.Handlers
                     setting.Value = request.Value;
                 }
                 await db.SaveChangesAsync();
-                return Unit.Value;
             }
 
         }

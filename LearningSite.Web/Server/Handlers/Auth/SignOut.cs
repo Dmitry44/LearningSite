@@ -21,12 +21,10 @@ namespace LearningSite.Web.Server.Handlers.Auth
                 this.authenticationService = authenticationService;
             }
 
-            public async Task<Unit> Handle(Request request, CancellationToken cancellationToken)
+            public async Task Handle(Request request, CancellationToken cancellationToken)
             {
                 await authenticationService.SignOutAsync(request.HttpContext,
                     CookieAuthenticationDefaults.AuthenticationScheme, new AuthenticationProperties());
-
-                return Unit.Value;
             }
 
         }

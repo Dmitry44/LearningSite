@@ -27,7 +27,7 @@ namespace LearningSite.Web.Server.Handlers.Auth
                 this.authenticationService = authenticationService;
             }
 
-            public async Task<Unit> Handle(Request request, CancellationToken cancellationToken)
+            public async Task Handle(Request request, CancellationToken cancellationToken)
             {
                 using var transaction = await db.Database.BeginTransactionAsync(cancellationToken);
 
@@ -84,8 +84,6 @@ namespace LearningSite.Web.Server.Handlers.Auth
                 await authenticationService.SignInAsync(request.HttpContext, authenticationScheme, claimsPrincipal, authProperties);
 
                 await transaction.CommitAsync(cancellationToken);
-
-                return Unit.Value;
             }
 
         }

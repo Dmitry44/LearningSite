@@ -2,6 +2,7 @@ using LearningSite.Web.Server;
 using LearningSite.Web.Server.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.EnableSensitiveDataLogging();
 });
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 builder.Services.AddAuthentication(options =>
 {
