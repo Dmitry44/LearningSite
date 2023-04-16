@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LearningSite.Domain\LearningSite.Domain.csproj" />
     <ProjectReference Include="..\LearningSite.Web\LearningSite.Web.csproj" />
   </ItemGroup>
 

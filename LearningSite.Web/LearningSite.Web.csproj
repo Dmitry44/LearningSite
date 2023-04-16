@@ -20,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LearningSite.Application\LearningSite.Application.csproj" />
+    <ProjectReference Include="..\LearningSite.Infrastructure\LearningSite.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Database\keep-dir.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
